@@ -63,3 +63,28 @@ Angular's change detection mechanism uses `zone.js` to patch asynchronous operat
 When such events occur, it checks the Angular application for possible changes.
 
 Deep dive about the change detection mechanism in later sections.
+
+## Introducing Signals
+
+In Angular, there are two approaches to managing state:
+
+Option 1: Relying on `zone.js` and Angular's change detection mechanism. This is the traditional approach used in Angular applications.
+
+- Works automatically, no special instructions required
+- Pretty straightforward and easy to use and understand
+- Supported since Angular 2
+
+Option 2: Using Signals to notify Angular about value changes and required UI updates.
+
+- Requires usage of special "signal" instructions and code
+- Requires usage of `@angular/core/signals` package
+- Supported since Angular 16
+
+Signals are trackable data containers:
+
+- A signal is an object that stores a value (any type of value, including nested objects)
+- When you change the value of a signal, it notifies Angular about the change
+- Angular manages subscriptions to the signal to get notified about changes
+- Angular is then able to identify which components are using the signal and need to be updated
+
+The advantage of using signals is that Angular can avoid checking the entire component tree for changes and zones concept. This can lead to better performance, especially in large applications with many components.
