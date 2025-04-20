@@ -11,6 +11,7 @@ export class UserComponent {
   // avatar = input.required<(typeof USERS)[number]['avatar']>();
   // name = input.required<(typeof USERS)[number]['name']>();
   // imagePath = computed(() => '/users/' + this.avatar());
+  // select = output<string>();
 
   @Input({
     required: true,
@@ -29,7 +30,7 @@ export class UserComponent {
 
   // custom event emitter to emit the selected user
   // this is a custom event emitter that emits an event when the user is selected
-  @Output() select = new EventEmitter();
+  @Output() select = new EventEmitter<string>();
 
   get imagePath() {
     return `/users/${this.avatar}`;
