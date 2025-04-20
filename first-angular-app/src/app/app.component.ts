@@ -7,6 +7,4 @@ import { HeaderComponent } from './header.component';
   styleUrl: './app.component.css', // this is the CSS file for the component
   imports: [HeaderComponent], // this is the list of components to import into the module
 })
-export class AppComponent {
-  title = 'first-angular-app';
-}
+export class AppComponent {}
