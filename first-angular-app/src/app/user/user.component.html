@@ -1,4 +1,7 @@
 <div>
   <button (click)="onSelectUser()">
+    <img [src]="imagePath" [alt]="name" (click)="onSelectUser()">
+
+    <span>{{name}}</span>
   </button>
 </div>
