@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import type { USERS } from './users';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -16,16 +15,29 @@ export class UserComponent {
   @Input({
     required: true,
   })
-  avatar!: (typeof USERS)[number]['avatar'];
+  id!: string;
+
   @Input({
     required: true,
   })
-  name!: (typeof USERS)[number]['name'];
+  avatar!: string;
+
+  @Input({
+    required: true,
+  })
+  name!: string;
+
+  // custom event emitter to emit the selected user
+  // this is a custom event emitter that emits an event when the user is selected
+  @Output() select = new EventEmitter();
 
   get imagePath() {
     return `/users/${this.avatar}`;
   }
 
-  // this method is called when the user clicks the button
-  onSelectUser() {}
+  // this method is called when the user clicks on the user card
+  // it emits the select event with the user ID as the payload
+  onSelectUser() {
+    this.select.emit(this.id);
+  }
 }
