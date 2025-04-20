@@ -53,3 +53,13 @@ Simplifies the process of building complex, interactive web user applications.
 - Separation of concerns via components
 - Object-oriented programming concepts and principles
 - Use of TypeScript
+
+## A Look Behind The Scenes Of Angular's Change Detection Mechanism
+
+Angular uses a change detection mechanism to keep the UI in sync with the underlying data model. This mechanism is based on the concept of zones, which are used to track asynchronous operations and trigger change detection when necessary.
+
+Angular's change detection mechanism uses `zone.js` to patch asynchronous operations and trigger change detection when they occur. `zone.js` notifies Angular about user events, HTTP requests, expired timers, etc. This allows Angular to automatically update the UI when the underlying data model changes.
+
+When such events occur, it checks the Angular application for possible changes.
+
+Deep dive about the change detection mechanism in later sections.
