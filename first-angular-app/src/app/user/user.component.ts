@@ -1,4 +1,4 @@
-import { Component, computed, Input, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import type { USERS } from './users';
 
 @Component({
@@ -8,22 +8,23 @@ import type { USERS } from './users';
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  // @Input({
-  //   required: true,
-  // })
-  // avatar!: (typeof USERS)[number]['avatar'];
-  // @Input({
-  //   required: true,
-  // })
-  // name!: (typeof USERS)[number]['name'];
+  // signals approach
+  // avatar = input.required<(typeof USERS)[number]['avatar']>();
+  // name = input.required<(typeof USERS)[number]['name']>();
+  // imagePath = computed(() => '/users/' + this.avatar());
 
-  avatar = input.required<(typeof USERS)[number]['avatar']>();
-  name = input.required<(typeof USERS)[number]['name']>();
-  imagePath = computed(() => '/users/' + this.avatar());
+  @Input({
+    required: true,
+  })
+  avatar!: (typeof USERS)[number]['avatar'];
+  @Input({
+    required: true,
+  })
+  name!: (typeof USERS)[number]['name'];
 
-  // get imagePath() {
-  //   return `/users/${this.avatar()}`;
-  // }
+  get imagePath() {
+    return `/users/${this.avatar}`;
+  }
 
   // this method is called when the user clicks the button
   onSelectUser() {}
