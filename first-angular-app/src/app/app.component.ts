@@ -11,4 +11,8 @@ import { USERS } from './user/users';
 })
 export class AppComponent {
   users = USERS;
+
+  clickedUser(id: string) {
+    console.log('Selected user with ID:', id);
+  }
 }
