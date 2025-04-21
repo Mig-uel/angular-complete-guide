@@ -12,18 +12,16 @@ import { USERS } from './user/users';
 })
 export class AppComponent {
   users = USERS;
-
-  // this is the selected user ID, default is 'u1'
-  selectedId = 'u1';
+  selectedUserId?: string;
 
   // this is a getter that returns the selected user object based on the selectedId
   get selectedUser() {
-    return this.users.find((u) => u.id === this.selectedId);
+    return this.users.find((u) => u.id === this.selectedUserId);
   }
 
   // this method is called when the user clicks on a user card
   // it sets the selectedId to the ID of the clicked user
   clickedUser(id: string) {
-    this.selectedId = id;
+    this.selectedUserId = id;
   }
 }
