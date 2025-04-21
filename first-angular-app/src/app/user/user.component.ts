@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import type { USERS } from './users';
 
+// user type
+type User = (typeof USERS)[number];
+
 @Component({
   selector: 'app-user',
   imports: [],
@@ -15,7 +18,7 @@ export class UserComponent {
   // select = output<string>();
 
   @Input({ required: true })
-  user!: (typeof USERS)[number];
+  user!: User;
 
   // custom event emitter to emit the selected user
   // this is a custom event emitter that emits an event when the user is selected
