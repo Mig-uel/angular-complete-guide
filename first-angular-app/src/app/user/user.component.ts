@@ -1,8 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import type { USERS } from './users';
-
-// user type
-type User = (typeof USERS)[number];
+import type { User } from './user.model'; // Assuming you have a user.model.ts file with the User interface
 
 @Component({
   selector: 'app-user',
@@ -12,8 +9,8 @@ type User = (typeof USERS)[number];
 })
 export class UserComponent {
   // signals approach
-  // avatar = input.required<(typeof USERS)[number]['avatar']>();
-  // name = input.required<(typeof USERS)[number]['name']>();
+  // avatar = input.required<User['avatar']>();
+  // name = input.required<User['name']>();
   // imagePath = computed(() => '/users/' + this.avatar());
   // select = output<string>();
 
