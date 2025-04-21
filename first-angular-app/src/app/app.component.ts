@@ -18,7 +18,7 @@ export class AppComponent {
 
   // this is a getter that returns the selected user object based on the selectedId
   get selectedUser() {
-    return this.users.find((u) => u.id === this.selectedId)!;
+    return this.users.find((u) => u.id === this.selectedId);
   }
 
   // this method is called when the user clicks on a user card
