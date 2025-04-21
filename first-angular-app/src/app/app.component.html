@@ -3,30 +3,18 @@
 <main>
   <ul id="users">
     <!-- for loop -->
-    <!-- @for (user of users; track user.id) {
+    @for (user of users; track user.id) {
     <li>
       <app-user [user]="user" (select)="clickedUser($event)" />
     </li>
-    } -->
-
-    <!-- for loop with ngFor -->
-    <li *ngFor="let user of users">
-      <app-user [user]="user" (select)="clickedUser($event)" />
-    </li>
+    }
   </ul>
 
 
-  <!-- @if (selectedUser) {
+  <!-- if statement -->
+  @if (selectedUser) {
   <app-tasks [name]="selectedUser.name" />
   } @else {
   <p id="fallback">Select a user to see their tasks!</p>
-  } -->
-
-  <!-- if case using ngIf -->
-  <app-tasks *ngIf="selectedUser; else fallback" [name]="selectedUser!.name" />
-  <!-- else case using ng-template -->
-  <ng-template #fallback>
-    <p id="fallback">Select a user to see their tasks!</p>
-  </ng-template>
-
+  }
 </main>
