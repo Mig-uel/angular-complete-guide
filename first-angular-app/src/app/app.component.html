@@ -2,21 +2,12 @@
 
 <main>
   <ul id="users">
+    <!-- for loop -->
+    @for (user of users; track user.id) {
     <li>
-      <app-user [user]="users[0]" (select)="clickedUser($event)" />
+      <app-user [user]="user" (select)="clickedUser($event)" />
     </li>
-
-    <li>
-      <app-user [user]="users[1]" (select)="clickedUser($event)" />
-    </li>
-
-    <li>
-      <app-user [user]="users[2]" (select)="clickedUser($event)" />
-    </li>
-
-    <li>
-      <app-user [user]="users[3]" (select)="clickedUser($event)" />
-    </li>
+    }
   </ul>
 
 
