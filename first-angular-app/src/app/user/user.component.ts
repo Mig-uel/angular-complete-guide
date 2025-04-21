@@ -16,6 +16,8 @@ export class UserComponent {
 
   @Input({ required: true })
   user!: User;
+  @Input({ required: true })
+  selected: boolean = false; // this is a boolean input that indicates if the user is selected
 
   // custom event emitter to emit the selected user
   // this is a custom event emitter that emits an event when the user is selected
