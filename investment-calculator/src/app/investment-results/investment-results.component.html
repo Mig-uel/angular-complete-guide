@@ -1,5 +1,5 @@
 @if (!results().length) {
-<p>Please enter some values and press "Calculate"</p>
+<p class="center">Please enter some values and press "Calculate"</p>
 }
 
 @if (results().length) {
@@ -14,6 +14,16 @@
     </tr>
   </thead>
 
-  <tbody></tbody>
+  <tbody>
+    @for (data of results(); track data.year) {
+    <tr>
+      <td>{{data.year}}</td>
+      <td>{{data.valueEndOfYear}}</td>
+      <td>{{data.interest}}</td>
+      <td>{{data.totalInterest}}</td>
+      <td>{{data.totalAmountInvested}}</td>
+    </tr>
+    }
+  </tbody>
 </table>
 }
