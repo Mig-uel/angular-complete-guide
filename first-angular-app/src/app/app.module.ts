@@ -1,27 +1,17 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
-import { TaskComponent } from './task/task.component';
-import { NewTaskComponent } from './tasks/new-task/new-task.component';
-import { TasksComponent } from './tasks/tasks.component';
+import { TasksModule } from './tasks/tasks.module';
 import { UserComponent } from './user/user.component';
 
 @NgModule({
   // declare and register all the components that need to work together (can also add directives)
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    UserComponent,
-    TasksComponent,
-    TaskComponent,
-    NewTaskComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, UserComponent],
 
   // standalone components
-  imports: [BrowserModule, FormsModule, SharedModule],
+  imports: [BrowserModule, SharedModule, TasksModule],
 
   // root component
   bootstrap: [AppComponent],
