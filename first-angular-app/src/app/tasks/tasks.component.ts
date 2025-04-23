@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import type { Task } from '../task/task.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -14,8 +15,12 @@ export class TasksComponent {
   userId!: string;
   @Input()
   name!: string;
-
   isAddingTask = false;
+
+  // Dependency Injection
+  // You 'tell' Angular which type of value you need
+  // and Angular creates it and provides it as an argument
+  constructor(private tasksService: TasksService) {}
 
   onClickCompleteFromTaskComponent(taskId: string) {}
 
@@ -30,11 +35,13 @@ export class TasksComponent {
 
   // listen to the add event emitter and handle it
   onAdd(task: Omit<Task, 'userId'>) {
-    this.tasks.unshift({
-      ...task,
-      userId: this.userId,
-    });
+    this.tasksService.addTask(task, this.userId);
 
     this.closeDialog();
+  }
+
+  // get the selected user's tasks
+  get selectedUserTasks() {
+    return this.tasksService.getUserTasks(this.userId);
   }
 }
