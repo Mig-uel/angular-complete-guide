@@ -7,10 +7,10 @@ import { UserComponent } from './user/user.component';
 
 @NgModule({
   // declare and register all the components that need to work together (can also add directives)
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
 
   // standalone components
-  imports: [BrowserModule, HeaderComponent, UserComponent, TasksComponent],
+  imports: [BrowserModule, UserComponent, TasksComponent],
 
   // root component
   bootstrap: [AppComponent],
