@@ -5,7 +5,7 @@ import type { Task } from '../task/task.model';
 // the idea behind a service is that it performs some operations or
 // manages some data that might be needed by one or more components
 
-class TasksService {
+export class TasksService {
   private tasks = [
     {
       id: 't1',
