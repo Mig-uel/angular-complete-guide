@@ -2,7 +2,8 @@
   <article>
     <h2>{{task.title}}</h2>
 
-    <time datetime="">{{task.dueDate}}</time>
+    <!-- pipe the output data means transforming the data -->
+    <time datetime="">{{task.dueDate | date: 'fullDate'}}</time>
 
     <p>{{task.summary}}</p>
 
