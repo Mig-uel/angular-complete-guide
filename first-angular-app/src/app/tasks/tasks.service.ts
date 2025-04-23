@@ -1,10 +1,14 @@
 // a service is just another class
 
+import { Injectable } from '@angular/core';
 import type { Task } from '../task/task.model';
 
 // the idea behind a service is that it performs some operations or
 // manages some data that might be needed by one or more components
 
+@Injectable({
+  providedIn: 'root',
+})
 export class TasksService {
   private tasks = [
     {
