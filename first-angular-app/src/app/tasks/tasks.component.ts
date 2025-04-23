@@ -22,10 +22,6 @@ export class TasksComponent {
   // and Angular creates it and provides it as an argument
   constructor(private tasksService: TasksService) {}
 
-  onClickCompleteFromTaskComponent(taskId: string) {
-    this.tasksService.removeTask(taskId);
-  }
-
   onAddTaskClicked() {
     this.isAddingTask = true;
   }
