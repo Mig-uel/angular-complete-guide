@@ -17,6 +17,8 @@ export class UserInputComponent {
   duration = signal('10');
 
   handleFormSubmit() {
+    if (!this.initialInvestment() || !this.annualInvestment()) return;
+
     this.calculate.emit({
       annualInvestment: +this.annualInvestment(),
       duration: +this.duration(),
