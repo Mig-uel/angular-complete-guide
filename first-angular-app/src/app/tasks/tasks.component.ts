@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import type { Task } from '../task/task.model';
@@ -15,7 +15,7 @@ export class TasksComponent {
   userId!: string;
   @Input()
   name!: string;
-  isAddingTask = false;
+  isAddingTask = signal(false);
 
   // Dependency Injection
   // You 'tell' Angular which type of value you need
@@ -23,12 +23,12 @@ export class TasksComponent {
   constructor(private tasksService: TasksService) {}
 
   onAddTaskClicked() {
-    this.isAddingTask = true;
+    this.isAddingTask.set(true);
   }
 
   // bind to <app-new-task /> @Output
   closeDialog() {
-    this.isAddingTask = false;
+    this.isAddingTask.set(false);
   }
 
   // listen to the add event emitter and handle it
