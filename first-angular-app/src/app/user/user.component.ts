@@ -1,26 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import type { User } from './user.model';
-import { CardComponent } from "../shared/card/card.component"; // Assuming you have a user.model.ts file with the User interface
 
 @Component({
+  standalone: false,
   selector: 'app-user',
-  imports: [CardComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  // signals approach
-  // avatar = input.required<User['avatar']>();
-  // name = input.required<User['name']>();
-  // imagePath = computed(() => '/users/' + this.avatar());
-  // select = output<string>();
-
   @Input({ required: true })
   user!: User;
   @Input({ required: true })
   selected: boolean = false; // this is a boolean input that indicates if the user is selected
 
-  // custom event emitter to emit the selected user
   // this is a custom event emitter that emits an event when the user is selected
   @Output()
   select = new EventEmitter<string>();
