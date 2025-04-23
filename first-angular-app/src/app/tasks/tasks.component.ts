@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import type { Task } from '../task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -58,5 +59,15 @@ export class TasksComponent {
   // bind to <app-new-task /> @Output
   closeDialog() {
     this.isAddingTask = false;
+  }
+
+  // listen to the add event emitter and handle it
+  onAdd(task: Omit<Task, 'userId'>) {
+    this.tasks.unshift({
+      ...task,
+      userId: this.userId,
+    });
+
+    this.closeDialog();
   }
 }
