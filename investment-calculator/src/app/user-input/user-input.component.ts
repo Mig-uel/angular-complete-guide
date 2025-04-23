@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-input.component.css',
 })
 export class UserInputComponent {
-  handleFormSubmit() {
-    console.log('Hello');
-  }
+  initialInvestment = signal('');
+  annualInvestment = signal('');
+  expectedReturnRate = signal('5');
+  duration = signal('10');
+
+  handleFormSubmit() {}
 }
