@@ -1,6 +1,13 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+  signal,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import type { Task } from '../../task/task.model';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-new-task',
@@ -9,34 +16,35 @@ import type { Task } from '../../task/task.model';
   styleUrl: './new-task.component.css',
 })
 export class NewTaskComponent {
+  @Input({ required: true }) userId!: string;
+
   // custom event emitter for parent <Tasks /> to emit when user wants to close
-  @Output() isBackdropOrCancelClicked = new EventEmitter<void>();
-
-  // custom even emitter for parent <Tasks /> to emit when form was submitted
-  @Output() add = new EventEmitter<Omit<Task, 'userId'>>();
-
-  // old way two-way binding
-  enteredTitle = '';
-  enteredSummary = '';
-  enteredDate = '';
+  @Output()
+  closeModal = new EventEmitter<void>();
 
   // signals for two-way binding
-  // enteredTitle = signal('');
-  // enteredSummary = signal('');
-  // enteredDate = signal('');
+  enteredTitle = signal('');
+  enteredSummary = signal('');
+  enteredDate = signal('');
+
+  private tasksService = inject(TasksService);
 
   // button click handler function passed to the button like react
-  onBackdropOrCancelClicked() {
-    this.isBackdropOrCancelClicked.emit();
+  onCloseModal() {
+    this.closeModal.emit();
   }
 
   // ngSubmit handler function
   onFormSubmit() {
-    this.add.emit({
-      dueDate: this.enteredDate,
-      id: crypto.randomUUID(),
-      summary: this.enteredSummary,
-      title: this.enteredTitle,
-    });
+    this.tasksService.addTask(
+      {
+        dueDate: this.enteredDate(),
+        id: crypto.randomUUID(),
+        summary: this.enteredSummary(),
+        title: this.enteredTitle(),
+      },
+      this.userId
+    );
+    this.closeModal.emit();
   }
 }
