@@ -54,4 +54,9 @@ export class TasksComponent {
   onAddTaskClicked() {
     this.isAddingTask = true;
   }
+
+  // bind to <app-new-task /> @Output
+  closeDialog() {
+    this.isAddingTask = false;
+  }
 }
