@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -15,6 +15,11 @@ export class NewTaskComponent {
   enteredTitle = '';
   enteredSummary = '';
   enteredDate = '';
+
+  // signals for two-way binding
+  // enteredTitle = signal('');
+  // enteredSummary = signal('');
+  // enteredDate = signal('');
 
   // button click handler function passed to the button like react
   onBackdropOrCancelClicked() {
