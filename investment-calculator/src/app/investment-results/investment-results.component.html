@@ -1,8 +1,8 @@
-@if (!results().length) {
+@if (results && !results.length) {
 <p class="center">Please enter some values and press "Calculate"</p>
 }
 
-@if (results().length) {
+@if (results && results.length) {
 <table>
   <thead>
     <tr>
@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-    @for (data of results(); track data.year) {
+    @for (data of results; track data.year) {
     <tr>
       <td>{{data.year}}</td>
       <td>{{data.valueEndOfYear | currency}}</td>
