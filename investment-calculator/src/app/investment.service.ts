@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import type { AnnualData, InvestmentInput } from './investment-input.model';
 
 // can generate a service using 'ng generate service <service-name>
@@ -6,7 +6,7 @@ import type { AnnualData, InvestmentInput } from './investment-input.model';
   providedIn: 'root', // singleton service auto-injected app-wide
 })
 export class InvestmentService {
-  resultsData?: AnnualData[];
+  resultsData = signal<AnnualData[]>([]);
 
   calculateInvestmentResults(data: InvestmentInput) {
     const annualData = [];
@@ -30,7 +30,7 @@ export class InvestmentService {
       });
     }
 
-    this.resultsData = annualData;
+    this.resultsData.set(annualData);
   }
 }
 
