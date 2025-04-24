@@ -88,3 +88,13 @@ Signals are trackable data containers:
 - Angular is then able to identify which components are using the signal and need to be updated
 
 The advantage of using signals is that Angular can avoid checking the entire component tree for changes and zones concept. This can lead to better performance, especially in large applications with many components.
+
+## When and How to Split Up Components?
+
+It's up tp you to decide when and how to split up components. There are no strict rules, but here are some guidelines:
+
+- Use components to encapsulate reusable UI elements and logic.
+- Split up components when they become too large or complex.
+- Create components for specific functionality or features.
+- Use a consistent naming convention for components.
+- Every component should have a single responsibility and should be focused on a specific task.
