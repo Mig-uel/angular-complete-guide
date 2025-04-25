@@ -1,0 +1,15 @@
+<div class="dashboard-item">
+  <article>
+    <header>
+      <img [src]="image().src" [alt]="image().alt" />
+      <h2>{{title()}}</h2>
+    </header>
+
+    <!-- 
+      This concept of using ng-content as a placeholder for the
+      wrapped content is also called Content Projection
+    -->
+    <ng-content />
+
+  </article>
+</div>
