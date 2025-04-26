@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -8,15 +8,25 @@ import { Component, input } from '@angular/core';
   standalone: true,
 })
 export class ServerStatusComponent {
+  intervalId: ReturnType<typeof setInterval> | undefined = undefined;
   currentStatus: 'online' | 'offline' | 'unknown' = 'online';
 
-  constructor() {
-    setInterval(() => {
+  constructor() {}
+
+  // Lifecycle hooks
+  ngOnInit() {
+    // Runs once after Angular has initiated all the component's inputs
+    this.intervalId = setInterval(() => {
       const rand = Math.random();
 
       if (rand < 0.5) this.currentStatus = 'online';
       else if (rand < 0.9) this.currentStatus = 'offline';
       else this.currentStatus = 'unknown';
     }, 5000);
+  }
+
+  ngOnDestroy() {
+    // runs once before the component is destroyed
+    clearInterval(this.intervalId);
   }
 }
