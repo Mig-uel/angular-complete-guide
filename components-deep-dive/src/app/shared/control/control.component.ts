@@ -1,4 +1,10 @@
-import { Component, input, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  // HostBinding,
+  input,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -10,10 +16,20 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
   // key-value pairs as properties to your host component
   host: {
     class: 'control',
+    '(click)': 'onClick()',
   },
 })
 export class ControlComponent {
+  // @HostBinding('class') className = 'control'; // deprecated/not preferred
+  // @HostListener('click') onClick() {
+  //   console.log('Click');
+  // } // deprecated/not preferred
+
   label = input.required<string>();
+
+  onClick() {
+    console.log('Click');
+  }
 }
 
 /**
