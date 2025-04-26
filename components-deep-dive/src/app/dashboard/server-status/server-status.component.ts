@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, type OnDestroy, type OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './server-status.component.css',
   standalone: true,
 })
-export class ServerStatusComponent {
+export class ServerStatusComponent implements OnInit, OnDestroy {
   intervalId: ReturnType<typeof setInterval> | undefined = undefined;
   currentStatus: 'online' | 'offline' | 'unknown' = 'online';
 
   constructor() {}
 
   // Lifecycle hooks
-  ngOnInit() {
+  ngOnInit(): void {
     // Runs once after Angular has initiated all the component's inputs
     this.intervalId = setInterval(() => {
       const rand = Math.random();
