@@ -1,6 +1,7 @@
 import {
   Component,
-  HostListener,
+  ElementRef,
+  inject,
   // HostBinding,
   input,
   ViewEncapsulation,
@@ -26,9 +27,11 @@ export class ControlComponent {
   // } // deprecated/not preferred
 
   label = input.required<string>();
+  private el = inject(ElementRef);
 
   onClick() {
     console.log('Click');
+    console.log(this.el);
   }
 }
 
