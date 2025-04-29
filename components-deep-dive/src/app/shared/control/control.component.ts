@@ -3,7 +3,6 @@ import {
   afterRender,
   Component,
   contentChild,
-  ContentChild,
   ElementRef,
   inject,
   // HostBinding,
@@ -44,7 +43,6 @@ export class ControlComponent {
       console.log('AFTER RENDER');
     });
 
-    
     afterNextRender(() => {
       console.log('AFTER NEXT RENDER');
     });
