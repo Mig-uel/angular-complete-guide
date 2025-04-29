@@ -19,12 +19,18 @@ export class NewTicketComponent implements AfterViewInit {
   // @ViewChild('form') private form?: ElementRef<HTMLFormElement>;
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
 
+  enteredTitle = '';
+  enteredText = '';
+
   // @Output() add = new EventEmitter<{ title: string; text: string }>();
   add = output<{ title: string; text: string }>();
 
-  onFormSubmit(title: string, ticketText: string) {
-    this.add.emit({ title, text: ticketText });
-    this.form().nativeElement.reset();
+  onFormSubmit() {
+    this.add.emit({ title: this.enteredTitle, text: this.enteredText });
+
+    this.enteredTitle = '';
+    this.enteredText = '';
+    // this.form().nativeElement.reset();
   }
 
   ngAfterViewInit(): void {
