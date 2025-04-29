@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NewTicketComponent } from "./new-ticket/new-ticket.component";
+import { NewTicketComponent } from './new-ticket/new-ticket.component';
+import type { Ticket } from './ticket.model';
 
 @Component({
   selector: 'app-tickets',
@@ -8,4 +9,6 @@ import { NewTicketComponent } from "./new-ticket/new-ticket.component";
   styleUrl: './tickets.component.css',
   standalone: true,
 })
-export class TicketsComponent {}
+export class TicketsComponent {
+  tickets: Ticket[] = [];
+}
