@@ -15,6 +15,7 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
 
   // Lifecycle hooks
   ngOnInit(): void {
+    console.log('ON INIT');
     // Runs once after Angular has initiated all the component's inputs
     this.intervalId = setInterval(() => {
       const rand = Math.random();
@@ -23,6 +24,10 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
       else if (rand < 0.9) this.currentStatus = 'offline';
       else this.currentStatus = 'unknown';
     }, 5000);
+  }
+
+  ngAfterViewInit() {
+    console.log('AFTER VIEW INIT');
   }
 
   ngOnDestroy() {
