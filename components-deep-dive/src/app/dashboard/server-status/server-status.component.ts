@@ -8,7 +8,7 @@ import { Component, type OnDestroy, type OnInit } from '@angular/core';
   standalone: true,
 })
 export class ServerStatusComponent implements OnInit, OnDestroy {
-  intervalId: ReturnType<typeof setInterval> | undefined = undefined;
+  private intervalId: ReturnType<typeof setInterval> | undefined = undefined;
   currentStatus: 'online' | 'offline' | 'unknown' = 'online';
 
   constructor() {}
@@ -30,8 +30,9 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
     console.log('AFTER VIEW INIT');
   }
 
+  // runs once before the component is destroyed
   ngOnDestroy() {
-    // runs once before the component is destroyed
+    // clean up interval
     clearInterval(this.intervalId);
   }
 }
