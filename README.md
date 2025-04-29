@@ -98,3 +98,27 @@ It's up tp you to decide when and how to split up components. There are no stric
 - Create components for specific functionality or features.
 - Use a consistent naming convention for components.
 - Every component should have a single responsibility and should be focused on a specific task.
+
+## Angular Learned Checklist
+
+### Components
+
+- [x] Creating reusable components
+- [x] Property binding (@Input, @Output, EventEmitter, etc.)
+- [x] Extending built-in HTML elements with custom components via Attribute Selectors
+- [x] Content projection (ng-content)
+- [x] Content projection with multiple slots (ng-content select)
+- [x] Content projection fallback
+- [x] Multi-element content projection
+- [x] View encapsulation (styles, shadow DOM, etc.)
+- [x] Class and style binding
+- [x] Component lifecycle hooks
+- [x] Template reference variables
+- [x] Getting access to template elements via ViewChild
+- [x] Using the viewChild signal function
+- [x] ViewChild vs ContentChild
+- [x] Making sense of signal effects
+- [x] Template binding (ngIf, ngFor, ngSwitch, etc.)
+- [x] Using @empty for @for fallback
+- [x] Updating signals using signal.update()
+- [x] Setting up two-way data binding
