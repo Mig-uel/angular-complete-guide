@@ -1,9 +1,9 @@
 import {
   Component,
+  output,
   viewChild,
   type AfterViewInit,
   type ElementRef,
-  type OnInit,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../../shared/button/button.component';
@@ -19,7 +19,11 @@ export class NewTicketComponent implements AfterViewInit {
   // @ViewChild('form') private form?: ElementRef<HTMLFormElement>;
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
 
+  // @Output() add = new EventEmitter<{ title: string; text: string }>();
+  add = output<{ title: string; text: string }>();
+
   onFormSubmit(title: string, ticketText: string) {
+    this.add.emit({ title, text: ticketText });
     this.form().nativeElement.reset();
   }
 
