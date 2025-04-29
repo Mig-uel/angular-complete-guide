@@ -28,6 +28,6 @@
   <p>{{data().request}}</p>
 
   @if (data().status == 'open') {
-  <p><button>Mark as completed</button></p>
+  <p><button (click)="onToggleComplete()">Mark as completed</button></p>
   } }
 </article>
