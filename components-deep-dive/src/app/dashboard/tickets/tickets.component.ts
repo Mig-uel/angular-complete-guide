@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NewTicketComponent } from './new-ticket/new-ticket.component';
 import type { Ticket } from './ticket.model';
-import { TicketComponent } from "./ticket/ticket.component";
+import { TicketComponent } from './ticket/ticket.component';
 
 @Component({
   selector: 'app-tickets',
@@ -22,5 +22,10 @@ export class TicketsComponent {
     };
 
     this.tickets.push(ticket);
+  }
+
+  onCloseTicket(id: string) {
+    const ticket = this.tickets.find((t) => t.id === id);
+    if (ticket) ticket.status = 'closed';
   }
 }
