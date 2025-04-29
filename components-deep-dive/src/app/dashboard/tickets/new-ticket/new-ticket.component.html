@@ -1,15 +1,30 @@
-<form>
+<form (ngSubmit)="onFormSubmit(titleInput.value, textInput.value)" #newTicketForm>
   <app-control label="title">
-    <input type="text" name="title" id="title" />
+    <!-- Using template variables -->
+    <input type="text" name="title" id="title" #titleInput />
   </app-control>
 
   <app-control label="request">
-    <textarea type="text" name="request" id="request" rows="3"></textarea>
+    <textarea type="text" name="request" id="request" rows="3" #textInput></textarea>
   </app-control>
 
   <p>
-    <button appButton style="width: 100%;">
+    <button appButton style="width: 100%;" type="submit">
       Submit
     </button>
   </p>
 </form>
+
+<!-- 
+  ngModel: Two-way data binding
+  ngModel is a directive that binds the value of HTML controls (input, select, textarea) to application data.
+  It provides a way to synchronize the view and the model, allowing for two-way data binding.
+  It is commonly used in Angular forms to handle user input and update the model accordingly.
+  In the example above, we can use ngModel to bind the input and textarea values to properties in the component class.
+  This allows us to easily access and manipulate the values entered by the user.
+
+  Template-driven forms: Angular provides a way to create forms using directives in the template.
+  Template-driven forms are a simple way to create forms in Angular using directives in the template.
+  They are easy to use and require minimal setup, making them a good choice for simple forms.
+  Template-driven forms are built on top of Angular's reactive forms module, which provides a more powerful and flexible way to create forms.
+-->
