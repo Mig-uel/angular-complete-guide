@@ -5,7 +5,7 @@
         'ticket-closed': false
       }"></div>
     <button>
-      <span class="text">TITLE</span>
+      <span class="text">{{data().title}}</span>
       <span>
         @if (true) {
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -25,9 +25,9 @@
   </h3>
 
   @if (true) {
-  <p>TEXT</p>
+  <p>{{data().request}}</p>
 
-  @if (true) {
+  @if (data().status == 'open') {
   <p><button>Mark as completed</button></p>
   } }
 </article>
