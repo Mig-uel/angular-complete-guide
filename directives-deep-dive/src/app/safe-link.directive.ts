@@ -1,4 +1,5 @@
 import { Directive, input, ElementRef } from '@angular/core';
+import { LogDirective } from './log.directive';
 
 /**
  * CUSTOM ATTRIBUTE DIRECTIVE
@@ -10,6 +11,8 @@ import { Directive, input, ElementRef } from '@angular/core';
   host: {
     '(click)': 'onConfirmLeavePage($event)',
   },
+
+  hostDirectives: [LogDirective],
 })
 export class SafeLinkDirective {
   queryParam = input('', {
