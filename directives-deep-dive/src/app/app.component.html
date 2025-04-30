@@ -6,9 +6,11 @@
   <app-auth />
 
   <!-- @if is a conditional rendering syntax -->
-  @if (isAdmin()) {
+  <!-- @if (isAdmin()) {
   <p>Only admins should see this</p>
-  }
+  } -->
+
+  <!-- ------------------------------- -->
 
   <!-- 
     prior to Angular 17, we had to use the *ngIf directive for conditional rendering.
@@ -18,7 +20,24 @@
     if using *ngIf, we need to import NgIf into our component module.
   -->
   <!-- <p *ngIf="isAdmin()">Only admins should see this!</p> -->
+
+  <!-- ------------------------------- -->
+
+  <!-- 
+  ng-template will not initially be rendered on the screen
+  the idea is to use it as a template for conditional rendering
+
+  structural directives always need such a template to work with but
+  can be added behind the scenes using '*' syntax
+
+  the '*' is just syntactic sugar for the ng-template
+  -->
+  <ng-template appAuth="admin">
+    <p>Only admins should see this!</p>
+  </ng-template>
 </main>
+
+<!-- ------------------------------- -->
 
 <!-- 
   In modern Angular, there are no more structural directives like *ngIf or *ngFor.
