@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, input } from '@angular/core';
 
 // custom attribute directive
 @Directive({
@@ -10,6 +10,8 @@ import { Directive } from '@angular/core';
   },
 })
 export class SafeLinkDirective {
+  queryParam = input('myapp');
+
   constructor() {
     console.log('SafeLinkDirective is active');
   }
@@ -17,7 +19,13 @@ export class SafeLinkDirective {
   onConfirmLeavePage(event: MouseEvent) {
     const confirm = window.confirm('Do you want to leave the app?');
 
-    if (confirm) return;
+    if (confirm) {
+      const address = (event.target as HTMLAnchorElement).href;
+
+      (event.target as HTMLAnchorElement).href =
+        address + `?from=${this.queryParam()}`;
+      return;
+    }
 
     event.preventDefault();
   }
