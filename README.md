@@ -99,9 +99,42 @@ It's up tp you to decide when and how to split up components. There are no stric
 - Use a consistent naming convention for components.
 - Every component should have a single responsibility and should be focused on a specific task.
 
+## Directives Deep Dive
+
+**What are directives?**
+
+Directives are classes that add additional behavior to elements in your Angular applications. They can be used to manipulate the DOM, add event listeners, and more.
+
+There are three types of directives in Angular:
+
+1. **Components**: Directives with a template. They are the most common type of directive and are used to create reusable UI elements.
+2. **Structural Directives**: Directives that change the structure of the DOM. They can be used to add or remove elements from the DOM based on certain conditions.
+3. **Attribute Directives**: Directives that change the appearance or behavior of an element. They can be used to add classes, styles, or event listeners to elements.
+4. **Custom Directives**: You can create your own directives to encapsulate reusable behavior and logic.
+
+Directives are _enhancements_ for elements (built-in ones or components). By enhanced, we mean extra behavior or settings can be added to the element.
+
+**For example:**
+
+We can use the `ngModel` directive to bind an input element to a property in our component. This allows us to automatically update the property when the user types in the input field.
+
+We add it to the input to make Angular aware of that input element and use it for two-way data binding or other purposes.
+
+The main takeaway is that `ngModel` is a directive not a component. It is there to under-the-hood enhance the input element and add extra behavior to it.
+
+Directives change the configuration (properties, attributes, classes, styles, etc.) of the element they are attached to.
+
+Unlike components, directives do not have their own view or template.
+
+In other words, components are directives with a template. They are the most common type of directive and are used to create reusable UI elements.
+
+Components are a directive because they enhance the element they are attached to with a template.
+
+Again, directives have no template. They are just used to enhance the element they are attached to.
+
 ## Angular Learned Checklist
 
-### Components
+### Components and Templates
 
 - [x] Creating reusable components
 - [x] Property binding (@Input, @Output, EventEmitter, etc.)
