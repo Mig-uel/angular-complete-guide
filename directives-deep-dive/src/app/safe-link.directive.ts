@@ -1,6 +1,8 @@
 import { Directive, input, ElementRef } from '@angular/core';
 
-// custom attribute directive
+/**
+ * CUSTOM ATTRIBUTE DIRECTIVE
+ */
 @Directive({
   selector: 'a[appSafeLink]',
   standalone: true,
