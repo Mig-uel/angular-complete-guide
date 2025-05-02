@@ -155,3 +155,19 @@ Again, directives have no template. They are just used to enhance the element th
 - [x] Using @empty for @for fallback
 - [x] Updating signals using signal.update()
 - [x] Setting up two-way data binding
+
+### Directives
+
+- [x] Understanding the difference between components and directives
+- [x] Analyzing a built-in attribute directive (ngModel)
+- [x] Analyzing a built-in structural directive (ngIf)
+- [x] Creating a custom attribute directive
+- [x] Using our custom attribute directive to change element behavior
+- [x] Working with Inputs in our custom attribute directive
+- [x] Directives and dependency injection
+- [x] Creating a custom structural directive
+- [x] Using our custom structural directive to change the DOM structure
+- [x] Using the TemplateRef and ViewContainerRef classes
+- [x] Using the ng-template element
+- [x] Using syntactic sugar for ng-template
+- [x] Host directives and composition
