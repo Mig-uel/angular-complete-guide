@@ -16,6 +16,10 @@ export class TasksService {
 
   constructor() {}
 
+  getTasks() {
+    return this.tasks();
+  }
+
   addTasks(data: { title: string; description: string }) {
     const task: Task = {
       ...data,
