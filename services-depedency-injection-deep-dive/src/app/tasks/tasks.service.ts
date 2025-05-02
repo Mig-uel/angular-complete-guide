@@ -13,12 +13,9 @@ import type { Task } from './task.model';
 })
 export class TasksService {
   private tasks = signal<Task[]>([]);
+  allTasks = this.tasks.asReadonly();
 
   constructor() {}
-
-  getTasks() {
-    return this.tasks();
-  }
 
   addTasks(data: { title: string; description: string }) {
     const task: Task = {
