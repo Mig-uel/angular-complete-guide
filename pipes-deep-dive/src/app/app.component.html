@@ -23,8 +23,9 @@
     </header>
     <ul>
       @for (temperature of historicTemperatures; track $index) {
-      <li (click)="onReset($index)">{{ temperature }}</li>
-      }
+      <li (click)="onReset($index)">{{ temperature |temp}}
+      <li>
+        }
     </ul>
   </article>
 </main>
