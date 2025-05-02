@@ -12,7 +12,7 @@ export class SortPipe implements PipeTransform {
       if (direction === 'asc') {
         return a > b ? 1 : -1;
       } else {
-        return a < b ? -1 : 1;
+        return a > b ? -1 : 1;
       }
     });
 
