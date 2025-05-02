@@ -10,7 +10,15 @@ export class TemperaturePipe implements PipeTransform {
    * the value after you use the pipe will be passed as an argument
    * to the transform method
    */
-  transform(value: any, ...args: any[]) {
-    return value + ' - transformed';
+  transform(value: number | string, ...args: any[]) {
+    let val: number;
+
+    if (typeof value === 'string') val = parseFloat(value);
+    else val = value;
+
+    // celsius to fahrenheit
+    const celsiusTemp = val * (9 / 5) + 32;
+
+    return `${celsiusTemp} °C`;
   }
 }
