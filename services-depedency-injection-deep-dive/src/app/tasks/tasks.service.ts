@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import type { Task } from './task.model';
+import type { Task, TaskStatus } from './task.model';
 
 /**
  * Injectable tells Angular that this class can be injected
@@ -25,5 +25,13 @@ export class TasksService {
     };
 
     this.tasks.update((prev) => [...prev, task]);
+  }
+
+  updateTaskStatus(id: string, updatedStatus: TaskStatus) {
+    const task = this.tasks().find((task) => task.id === id);
+
+    if (!task) return;
+
+    task.status = updatedStatus;
   }
 }
