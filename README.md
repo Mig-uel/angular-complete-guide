@@ -132,6 +132,20 @@ Components are a directive because they enhance the element they are attached to
 
 Again, directives have no template. They are just used to enhance the element they are attached to.
 
+## Pipes - Deep Dive
+
+**What are pipes?**
+
+Pipes are a way to transform data in Angular templates. They can be used to format dates, currencies, numbers, and more.
+
+Pipes transform the way data is displayed in the UI. In the end, in Angular, pipes are just functions that take an input value and return a transformed value.
+
+They are a thing you can add in your template to transform the way data is displayed on the screen. Pipes transform values or how values are formatted and displayed when used in a template.
+
+By default, Angular comes with a lot of built-in pipes. You can also create your own custom pipes to encapsulate reusable transformation logic.
+
+Pipes are a great way to keep your templates clean and readable. They allow you to separate the transformation logic from the presentation logic.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
