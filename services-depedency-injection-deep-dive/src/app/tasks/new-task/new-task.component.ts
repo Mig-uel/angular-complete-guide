@@ -11,7 +11,16 @@ import { TasksService } from '../tasks.service';
 export class NewTaskComponent {
   private formEl = viewChild<ElementRef<HTMLFormElement>>('form');
 
-  // instantiate new TasksService
+  /**
+   * Request TasksService service by passing the type
+   * of the injector you want to use
+   *
+   * The type is IMPORTANT!
+   *
+   * The type serves as the so-called "Injection Token" which
+   * is used by Angular to identify the "thing"
+   * (e.g. the service) it should create and inject
+   */
   constructor(private tasksService: TasksService) {}
 
   onAddTask(title: string, description: string) {
