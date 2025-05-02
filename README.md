@@ -146,6 +146,17 @@ By default, Angular comes with a lot of built-in pipes. You can also create your
 
 Pipes are a great way to keep your templates clean and readable. They allow you to separate the transformation logic from the presentation logic.
 
+## Services and Dependency Injection - Deep Dive
+
+**Understanding services**
+
+Services are classes that encapsulate reusable logic and functionality. They can be used to share data and functionality across different components in your Angular application.
+
+- Services allow you to share logic and data across the application.
+- Services are singletons by default. This means that there is only one instance of the service in the entire application.
+
+You build centralized services that can be injected into multiple components, directives, and other services to share data and functionality.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
