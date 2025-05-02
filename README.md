@@ -157,6 +157,25 @@ Services are classes that encapsulate reusable logic and functionality. They can
 
 You build centralized services that can be injected into multiple components, directives, and other services to share data and functionality.
 
+**Dependency Injection**
+
+Dependency Injection (DI) is a design pattern used in Angular to manage the dependencies of classes. It allows you to inject services into components, directives, and other services.
+
+DI is a way to provide dependencies to a class without having to create them manually. This allows you to decouple your classes and make them more testable.
+
+When you inject a service into a component, Angular creates an instance of the service and provides it to the component.
+
+Angular has this built-in feature called "Dependency Injection" (DI). In the end it means that components, directives, and other services can request dependencies (services) from Angular.
+
+- You don't create service instances yourself — instead, you request them from Angular.
+- Angular's DI system is not limited to services but is the most common use case. You can also inject other components, directives, and even values.
+
+Angular uses multiple injectors to manage the lifecycle of services. You can register your services at different levels in the application, such as the root injector or a specific component injector. This allows you to control the scope and lifecycle of your services.
+
+When your components, directives, and other services request a dependency go through an injector tree to see if the dependency can be provided.
+
+Again, we do not create service instances ourselves. We request them from Angular.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
