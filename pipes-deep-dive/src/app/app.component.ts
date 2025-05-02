@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   currentDate = new Date();
-  currentTemperaturs = {
+  currentTemperatures = {
     berlin: 4.2749812,
     newYork: 18.1214,
     paris: 72.1209001,
