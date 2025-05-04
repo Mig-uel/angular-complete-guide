@@ -245,6 +245,32 @@ It is typically better to provide services in the `@Injectable` decorator. This 
 
 We will cover lazy loading and splitting in a later section.
 
+**Element Injector**:
+
+Besides providing a service using the `@Injectable` decorator or in the `main.ts` file, you can also provide a service with the Element Injector instead.
+
+You can also provide services at the component level. This means that the service will only be available to that component and its child components.
+
+The Element Injector is a special injector that is closely tied to your DOM elements, components, and directives. It is created when a component is instantiated and is responsible for providing services that are specific to that component.
+
+We can provide a service in the `@Component` decorator:
+
+```typescript
+@Component({
+  selector: 'app-my-component',
+  templateUrl: './my-component.component.html',
+  styleUrls: ['./my-component.component.css'],
+  providers: [MyService], // <-- Provide the service here
+})
+export class MyComponent {
+  constructor(private myService: MyService) {}
+}
+```
+
+This means that the service will only be available to that component and its child components. This is a great way to provide services that are only needed by a specific component and its child components.
+
+Other components in the application will not be able to access this service.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
@@ -284,3 +310,11 @@ We will cover lazy loading and splitting in a later section.
 - [x] Using the ng-template element
 - [x] Using syntactic sugar for ng-template
 - [x] Host directives and composition
+
+```
+
+```
+
+```
+
+```
