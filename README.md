@@ -271,6 +271,11 @@ This means that the service will only be available to that component and its chi
 
 Other components in the application will not be able to access this service.
 
+**Understanding the Behavior of Element Injector**
+
+When you provide a service in the `@Component` decorator, Angular creates a new instance of the service for that component and its child components.
+This means that if you inject the same service into multiple components including child components, each component will get its own instance of the service.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
