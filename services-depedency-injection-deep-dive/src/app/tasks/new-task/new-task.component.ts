@@ -1,4 +1,5 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { TasksServiceToken } from './../../../main';
+import { Component, ElementRef, Inject, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TasksService } from '../tasks.service';
 
@@ -21,7 +22,8 @@ export class NewTaskComponent {
    * is used by Angular to identify the "thing"
    * (e.g. the service) it should create and inject
    */
-  constructor(private tasksService: TasksService) {}
+  // constructor(private tasksService: TasksService) {}
+  constructor(@Inject(TasksServiceToken) private tasksService: TasksService) {}
 
   onAddTask(title: string, description: string) {
     this.tasksService.addTasks({ title, description });
