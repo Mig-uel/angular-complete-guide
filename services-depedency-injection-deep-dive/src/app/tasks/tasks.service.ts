@@ -7,6 +7,13 @@ import type { Task, TaskStatus } from './task.model';
  *
  * In most cases, we will be using 'root' for providedIn,
  * meaning this service can be uses app-wide
+ *
+ * This service can also be provided in the `main.ts` file by
+ * passing a second argument to bootstrapApplication.
+ *
+ * {
+ *  providers: [TasksService]
+ * }
  */
 @Injectable({
   providedIn: 'root',
