@@ -176,6 +176,33 @@ When your components, directives, and other services request a dependency go thr
 
 Again, we do not create service instances ourselves. We request them from Angular.
 
+**Angular Has Multiple Injectors**
+
+Angular has multiple injectors to manage the lifecycle of services. You can register your services at different levels in the application, such as the root injector or a specific component injector. This allows you to control the scope and lifecycle of your services.
+
+Note: you must make Angular "aware" of the "things" (e.g. services) that should be injectable. That's why these "things" must be registered with one of its injectors.
+
+These injectors are setup as a hierarchy.
+
+### Platform EnvironmentInjector
+
+The Platform Injector is the top-level injector in Angular. It is created when the Angular application is bootstrapped and is responsible for providing services that are shared across multiple applications running on the same platform/application.
+
+Technically, there is a Null Injector at the top of the hierarchy, but it is not used in Angular applications other than throwing errors when a dependency cannot be resolved.
+
+The idea of the Platform Injector is that it could provide values, service instances, etc. for multiple applications registered in the same Angular application (a more advanced use case).
+
+For example, in `main.ts`, you could bootstrap multiple applications using the same platform injector.
+
+### Application Root EnvironmentInjector and Module Injector
+
+For most application, the Application Root Injector and potentially the Module Injector, if you are working with ngModules, and the Element Injector are the most relevant ones.
+
+It's always the Element Injector to which a component reaches out first to request a dependency (e.g. a service instance).
+If the Element Injector cannot provide the dependency, it will reach out to the Application Root Injector or the Module Injector.
+And if the Application Root Injector or Module Injector cannot provide the dependency, it will reach out to the Platform Injector.
+Finally, if the Platform Injector cannot provide the dependency, it moves up to the Null Injector and throws an error.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
