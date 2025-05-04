@@ -300,6 +300,41 @@ export class MyService {
 
 You can also inject services for other services by directly going to the `main.ts` file and passing a second argument to the `bootstrapApplication` function.
 
+### Using Custom Dependency Injection Tokens & Providers
+
+You can also use custom dependency injection tokens to provide services. This is a great way to create reusable services that can be used in multiple applications.
+
+Custom tokens are useful when you want to provide a service that is not tied to a specific class or when you want to provide a value instead of a class.
+
+An injection token is a unique identifier that is used to register a service with an injector. It can be a string, a symbol, or a class.
+
+Usually, when we provide a service, we pass the class name as the token. This is a shortcut that Angular provides for us.
+
+We could however register our own custom token and use that to register a service.
+
+```typescript
+import { InjectionToken } from '@angular/core'
+
+export const MY_CUSTOM_TOKEN = new InjectionToken<MyService>('MyCustomToken')
+```
+
+You can then use this token to provide a service to the bootstrap application.
+
+```typescript
+import { bootstrapApplication } from '@angular/platform-browser'
+import { AppComponent } from './app/app.component'
+import { MY_CUSTOM_TOKEN } from './my-custom-token'
+import { MyService } from './my.service'
+
+bootstrapApplication(AppComponent, {
+  providers: [{ provide: MY_CUSTOM_TOKEN, useClass: MyService }],
+})
+```
+
+You would then use the token to inject the service into your component or service.
+
+Typically, you would use the shortcut of passing the class name as the token and only in advanced use cases you would create your own custom token.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
@@ -339,6 +374,10 @@ You can also inject services for other services by directly going to the `main.t
 - [x] Using the ng-template element
 - [x] Using syntactic sugar for ng-template
 - [x] Host directives and composition
+
+```
+
+```
 
 ```
 
