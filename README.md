@@ -203,6 +203,46 @@ If the Element Injector cannot provide the dependency, it will reach out to the 
 And if the Application Root Injector or Module Injector cannot provide the dependency, it will reach out to the Platform Injector.
 Finally, if the Platform Injector cannot provide the dependency, it moves up to the Null Injector and throws an error.
 
+### Multiple Ways of Providing Services
+
+There are multiple ways to provide services in Angular:
+
+**Root Injector**: The most common way to provide services is to register them in the root injector. This makes the service available throughout the entire application.
+
+```typescript
+@Injectable({
+  providedIn: 'root',
+})
+export class MyService {}
+```
+
+This is typically how you want to provide services. It makes them available throughout the entire application.
+
+However, there are alternative ways to provide services.
+
+Without the above added in, you can still provide the service to your entire application by going to the `main.ts` file and passing a second argument to the `bootstrapApplication` function.
+
+```typescript
+import { bootstrapApplication } from '@angular/platform-browser'
+import { AppComponent } from './app/app.component'
+import { MyService } from './my.service'
+
+bootstrapApplication(AppComponent, {
+  providers: [MyService],
+})
+```
+
+This is a more advanced use case and not the most common way to provide services.
+
+Note: a provider is a class and piece of information that lets Angular know that a certain value should be injected into a component or service.
+
+One important difference between the two approaches is that when you provide a service in the `main.ts` file, it is not tree-shakable. This means that if you don't use the service in your application, it will still be included in the final bundle.
+When you provide a service in the `@Injectable` decorator, it is tree-shakable. This means that if you don't use the service in your application, it will be removed from the final bundle.
+
+It is typically better to provide services in the `@Injectable` decorator. This makes them tree-shakable and allows Angular to optimize the final bundle size.
+
+We will cover lazy loading and splitting in a later section.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
