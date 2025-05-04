@@ -220,6 +220,8 @@ This is typically how you want to provide services. It makes them available thro
 
 However, there are alternative ways to provide services.
 
+**main.ts**:
+
 Without the above added in, you can still provide the service to your entire application by going to the `main.ts` file and passing a second argument to the `bootstrapApplication` function.
 
 ```typescript
