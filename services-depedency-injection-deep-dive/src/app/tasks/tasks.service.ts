@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { LoggingService } from '../logging.service';
 import type { Task, TaskStatus } from './task.model';
 
 /**
@@ -29,7 +30,7 @@ export class TasksService {
   private tasks = signal<Task[]>([]);
   allTasks = this.tasks.asReadonly();
 
-  constructor() {}
+  constructor(private loggingService: LoggingService) {}
 
   addTasks(data: { title: string; description: string }) {
     const task: Task = {
@@ -39,12 +40,16 @@ export class TasksService {
     };
 
     this.tasks.update((prev) => [...prev, task]);
+    this.loggingService.log('ADDED TASKS WITH TITLE ' + data.title);
   }
+
   updateTaskStatus(id: string, updatedStatus: TaskStatus) {
     const task = this.tasks().find((task) => task.id === id);
 
     if (!task) return;
 
     task.status = updatedStatus;
+
+    this.loggingService.log('CHANGED TASK STATUS TO ' + updatedStatus);
   }
 }
