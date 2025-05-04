@@ -276,6 +276,30 @@ Other components in the application will not be able to access this service.
 When you provide a service in the `@Component` decorator, Angular creates a new instance of the service for that component and its child components.
 This means that if you inject the same service into multiple components including child components, each component will get its own instance of the service.
 
+### Injecting Services into Services
+
+You can also inject services into other services. This is a great way to share functionality and data between services.
+
+If you are using the `@Injectable` decorator to provide a service, you can inject other services into it using the constructor or the 'inject()' function.
+
+```typescript
+import { Injectable } from '@angular/core'
+import { LoggingService } from './my.service'
+
+@Injectable({
+  providedIn: 'root', // Specify the providerIn option
+})
+export class MyService {
+  constructor(private loggingService: LoggingService) {}
+
+  MyServiceMethod() {
+    this.loggingService.log('MyService method called')
+  }
+}
+```
+
+You can also inject services for other services by directly going to the `main.ts` file and passing a second argument to the `bootstrapApplication` function.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
@@ -315,6 +339,14 @@ This means that if you inject the same service into multiple components includin
 - [x] Using the ng-template element
 - [x] Using syntactic sugar for ng-template
 - [x] Host directives and composition
+
+```
+
+```
+
+```
+
+```
 
 ```
 
