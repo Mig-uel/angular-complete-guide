@@ -14,10 +14,17 @@ import type { Task, TaskStatus } from './task.model';
  * {
  *  providers: [TasksService]
  * }
+ *
+ * We can also provide this service by going to the component's
+ * file and add TasksService under providers array
+ *
+ * @Component({
+ *  providers: [TasksService]
+ * })
  */
-@Injectable({
-  providedIn: 'root',
-})
+// @Injectable({
+//   providedIn: 'root',
+// })
 export class TasksService {
   private tasks = signal<Task[]>([]);
   allTasks = this.tasks.asReadonly();
@@ -33,7 +40,6 @@ export class TasksService {
 
     this.tasks.update((prev) => [...prev, task]);
   }
-
   updateTaskStatus(id: string, updatedStatus: TaskStatus) {
     const task = this.tasks().find((task) => task.id === id);
 
