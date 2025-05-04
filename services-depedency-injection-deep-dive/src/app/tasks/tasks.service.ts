@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { LoggingService } from '../logging.service';
 import type { Task, TaskStatus } from './task.model';
 
@@ -23,14 +23,13 @@ import type { Task, TaskStatus } from './task.model';
  *  providers: [TasksService]
  * })
  */
-@Injectable({
-  providedIn: 'root',
-})
+// @Injectable({
+//   providedIn: 'root',
+// })
 export class TasksService {
   private tasks = signal<Task[]>([]);
+  private loggingService = inject(LoggingService);
   allTasks = this.tasks.asReadonly();
-
-  constructor(private loggingService: LoggingService) {}
 
   addTasks(data: { title: string; description: string }) {
     const task: Task = {
