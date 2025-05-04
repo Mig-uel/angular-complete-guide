@@ -22,9 +22,9 @@ import type { Task, TaskStatus } from './task.model';
  *  providers: [TasksService]
  * })
  */
-// @Injectable({
-//   providedIn: 'root',
-// })
+@Injectable({
+  providedIn: 'root',
+})
 export class TasksService {
   private tasks = signal<Task[]>([]);
   allTasks = this.tasks.asReadonly();
