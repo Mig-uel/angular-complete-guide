@@ -441,6 +441,29 @@ export class MyComponent {
 
 This will run the code outside of the zone and prevent change detection from being triggered. This is a great way to improve performance and avoid zone pollution.
 
+### Using OnPush Strategy
+
+The OnPush strategy is a change detection strategy that tells Angular to only check the component for changes when certain conditions are met. This can lead to better performance, especially in large applications with many components.
+
+The OnPush strategy is an opt-in strategy that can be applied per component basis to make sure change detection potentially runs less often.
+
+To use the OnPush strategy, you can set the `changeDetection` property in the `@Component` decorator to `ChangeDetectionStrategy.OnPush`.
+
+```typescript
+import { Component, ChangeDetectionStrategy } from '@angular/core'
+@Component({
+  selector: 'app-my-component',
+  templateUrl: './my-component.component.html',
+  styleUrls: ['./my-component.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush, // <-- Use OnPush strategy
+})
+export class MyComponent {
+  // Component logic
+}
+```
+
+This tells Angular to use the OnPush change detection strategy for this component.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
