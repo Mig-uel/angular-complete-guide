@@ -480,6 +480,10 @@ This means that Angular will not check the component for changes when the compon
 
 You can also manually trigger change detection by using the `ChangeDetectorRef` service. This service provides methods to manually mark the component for check or to detect changes.
 
+### Working with OnPush and Signals
+
+When using signals, the OnPush strategy is not necessary because signals automatically notify Angular about changes. Signals are designed to work with the change detection mechanism and will trigger change detection when the signal value changes.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
