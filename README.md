@@ -464,6 +464,22 @@ export class MyComponent {
 
 This tells Angular to use the OnPush change detection strategy for this component.
 
+### Understanding the OnPush Strategy
+
+The OnPush strategy tells Angular that the component that uses it will only ever change because some event occurred inside of the components or inside a nested component, or because an input property of the component changed.
+
+When using the OnPush strategy, Angular will only check the component for changes when:
+
+1. An input property of the component changes.
+2. An event is emitted from the component.
+3. The component is manually marked for check using the `markForCheck` method.
+4. The component is manually marked for check using the `detectChanges` method.
+5. The component is manually marked for check using the `checkNoChanges` method.
+
+This means that Angular will not check the component for changes when the component is rendered or when the component is updated. This can lead to better performance, especially in large applications with many components.
+
+You can also manually trigger change detection by using the `ChangeDetectorRef` service. This service provides methods to manually mark the component for check or to detect changes.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
