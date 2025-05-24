@@ -404,22 +404,8 @@ This will provide the value "Hello World" to the `MY_CUSTOM_TOKEN` token. You ca
 - [x] Using syntactic sugar for ng-template
 - [x] Host directives and composition
 
-```
+### Pipes
 
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
+- [x] Understanding the purpose of pipes
+- [x] Using built-in pipes
+- [x] Creating a custom pipe
