@@ -1,9 +1,8 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { Task, TaskStatus } from '../../task.model';
-import { TasksService } from '../../tasks.service';
 import { TasksServiceToken } from '../../../../main';
+import { Task, TaskStatus } from '../../task.model';
 
 @Component({
   selector: 'app-task-item',
