@@ -417,6 +417,30 @@ This is also why the `pipe` transformation values is cached by default. It is a 
 
 Zone pollution is a performance issue that occurs when the zone is notified about too many events. This can lead to performance issues and slow down the application.
 
+You can tell Angular to ignore certain events for change detection. Angular provides a way to opt out of change detection for certain events.
+
+To use this feature, you have to inject the `NgZone` service into your component and use the `runOutsideAngular` method to run the code outside of the zone.
+
+```typescript
+import { Component, NgZone } from '@angular/core'
+@Component({
+  selector: 'app-my-component',
+  templateUrl: './my-component.component.html',
+  styleUrls: ['./my-component.component.css'],
+})
+export class MyComponent {
+  constructor(private ngZone: NgZone) {}
+
+  myMethod() {
+    this.ngZone.runOutsideAngular(() => {
+      // Code that should not trigger change detection
+    })
+  }
+}
+```
+
+This will run the code outside of the zone and prevent change detection from being triggered. This is a great way to improve performance and avoid zone pollution.
+
 ## Angular Learned Checklist ### Components and Templates
 
 - [x] Creating reusable components
