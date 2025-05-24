@@ -484,6 +484,16 @@ You can also manually trigger change detection by using the `ChangeDetectorRef` 
 
 When using signals, the OnPush strategy is not necessary because signals automatically notify Angular about changes. Signals are designed to work with the change detection mechanism and will trigger change detection when the signal value changes.
 
+### Going Zone-less
+
+If you want to avoid using `zone.js` and the change detection mechanism, you can use signals to manage state and notify Angular about changes. This allows you to write more efficient code and avoid the overhead of change detection.
+
+Signals are a new feature in Angular that allows you to manage state and notify Angular about changes without using `zone.js` and the change detection mechanism.
+
+Signals are trackable data containers that notify Angular about changes when the value of the signal changes. This allows Angular to update the UI without using `zone.js` and the change detection mechanism.
+
+Signals are a great way to write more efficient code and avoid the overhead of change detection. They allow you to manage state and notify Angular about changes without using `zone.js` and the change detection mechanism.
+
 ## Angular Learned Checklist
 
 ### Components and Templates

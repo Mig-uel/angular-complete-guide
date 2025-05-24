@@ -38,10 +38,8 @@ export class CounterComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => this.count.set(0), 4000);
 
-    this.zone.runOutsideAngular(() => {
-      setTimeout(() => {
-        console.log('Timer expired!');
-      }, 5000);
-    });
+    setTimeout(() => {
+      console.log('Timer expired!');
+    }, 5000);
   }
 }
