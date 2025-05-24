@@ -399,13 +399,24 @@ The second check is a "strict check" that checks if the component's state has ch
 
 This is a safety measure to catch any potential issues with change detection. It is not necessary in production mode, but it is a good practice to keep it in development mode.
 
-## Angular Learned Checklist
+### Writing Efficient Template Bindings
 
-### Components and Templates
+When writing template bindings, it is important to keep in mind that Angular will check all components in the component tree for changes. This means that if you have a lot of components and a lot of bindings, it can lead to performance issues.
+
+To avoid this, you should try to keep your template bindings as simple as possible. Avoid using complex expressions or functions in your template bindings. Instead, use simple property bindings and event bindings.
+
+For example, instead of using a complex expression in your template binding, you can use a simple property binding and update the property in your component.
+
+Avoid calling functions in your template bindings. Instead, use property bindings and event bindings to update the UI. And, if you are using getters, make sure you perform basic efficient calculations in the getter and avoid complex calculations.
+
+This is also why the `pipe` transformation values is cached by default. It is a performance optimization to avoid re-evaluating the pipe every time change detection runs.
+
+## Angular Learned Checklist ### Components and Templates
 
 - [x] Creating reusable components
 - [x] Property binding (@Input, @Output, EventEmitter, etc.)
-- [x] Extending built-in HTML elements with custom components via Attribute Selectors
+- [x] Extending built-in HTML elements with custom components via Attribute
+      Selectors
 - [x] Content projection (ng-content)
 - [x] Content projection with multiple slots (ng-content select)
 - [x] Content projection fallback
