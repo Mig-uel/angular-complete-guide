@@ -409,3 +409,14 @@ This will provide the value "Hello World" to the `MY_CUSTOM_TOKEN` token. You ca
 - [x] Understanding the purpose of pipes
 - [x] Using built-in pipes
 - [x] Creating a custom pipe
+
+### Services and Dependency Injection
+
+- [x] Understanding the purpose of services
+- [x] Creating a service
+- [x] Using a service in a component
+- [x] Using a service in another service
+- [x] Analyzing DI with the Angular DevTools
+- [x] Using custom dependency injection tokens and providers
+- [x] Injecting non-class values
+- [x] Using the inject() function
