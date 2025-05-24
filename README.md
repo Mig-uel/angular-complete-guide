@@ -378,6 +378,15 @@ We will cover the following topics:
 
 Change detection happens automatically behind the scenes. You don't have to worry about it most of the time. However, it is important to understand how it works and how to optimize it for better performance.
 
+### How Does Change Detection Work?
+
+By default, you have your component tree and Angular wraps the entire application in a zone. This zone is responsible for tracking asynchronous operations and notifying Angular when they occur.
+
+For example, when a user clicks a button or an HTTP request is made, the zone will notify Angular about the event. It here where the change detection mechanism kicks in and visits all components in the component tree to check if any of them need to be updated. It takes a look at all the templates and template bindings (i.e. all the uses of property bindings, event bindings, etc.) and checks whether that data has changed.
+If it has, Angular will update the UI accordingly.
+
+However, why does Angular check all components in the component tree? Why not just check the component that triggered the event? Why does it perform two checks?
+
 ## Angular Learned Checklist
 
 ### Components and Templates
