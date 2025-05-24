@@ -364,6 +364,20 @@ export class MyComponent {
 
 This will provide the value "Hello World" to the `MY_CUSTOM_TOKEN` token. You can then inject this value into your component or service using the `@Inject` decorator.
 
+## Understanding Change Detection - Deep Dive
+
+An important feature of Angular is its change detection mechanism. This mechanism is responsible for keeping the UI in sync with the underlying data model.
+
+We will cover the following topics:
+
+- What is change detection?
+- How does change detection work?
+- How to optimize change detection? (e.g. using OnPush strategy)
+- How change detection changes when using signals?
+- How its related to `zone.js`? And how we can avoid using `zone.js`?
+
+Change detection happens automatically behind the scenes. You don't have to worry about it most of the time. However, it is important to understand how it works and how to optimize it for better performance.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
