@@ -387,6 +387,18 @@ If it has, Angular will update the UI accordingly.
 
 However, why does Angular check all components in the component tree? Why not just check the component that triggered the event? Why does it perform two checks?
 
+### Change Detection During Development (ExpressionChangedAfterCheckedError)
+
+Why do we have duplicated checks in development mode?
+
+In development mode, Angular performs two checks to ensure that the application is working correctly. This is a safety measure to catch any potential issues with change detection.
+
+The first check is a "dirty check" that checks if the component's state has changed. If it has, Angular will update the UI accordingly.
+
+The second check is a "strict check" that checks if the component's state has changed in a way that could cause issues. If it has, Angular will throw an error and notify you about the issue.
+
+This is a safety measure to catch any potential issues with change detection. It is not necessary in production mode, but it is a good practice to keep it in development mode.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
