@@ -441,7 +441,9 @@ export class MyComponent {
 
 This will run the code outside of the zone and prevent change detection from being triggered. This is a great way to improve performance and avoid zone pollution.
 
-## Angular Learned Checklist ### Components and Templates
+## Angular Learned Checklist
+
+### Components and Templates
 
 - [x] Creating reusable components
 - [x] Property binding (@Input, @Output, EventEmitter, etc.)
