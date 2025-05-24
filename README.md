@@ -335,6 +335,35 @@ You would then use the token to inject the service into your component or servic
 
 Typically, you would use the shortcut of passing the class name as the token and only in advanced use cases you would create your own custom token.
 
+### Preparing a Non-Class Value for Injection
+
+Aside from services, you can also provide non-service or non-class values to the injector. This is a great way to provide configuration values or constants that can be used throughout your application.
+
+First, you need to create a token that will be used to identify the value. You can use the `InjectionToken` class to create a token.
+
+```typescript
+import { InjectionToken } from '@angular/core'
+export const MY_CUSTOM_TOKEN = new InjectionToken<string>('MyCustomToken')
+```
+
+Then, you can provide this token in the `main.ts` file or in the `@Component` decorator. For this example, we will provide it in the `@Component` decorator. We also need to specify the type of the value we are providing.
+
+```typescript
+@Component({
+  selector: 'app-my-component',
+  templateUrl: './my-component.component.html',
+  styleUrls: ['./my-component.component.css'],
+  providers: [{ provide: MY_CUSTOM_TOKEN, useValue: 'Hello World' }],
+})
+export class MyComponent {
+  constructor(@Inject(MY_CUSTOM_TOKEN) private myCustomValue: string) {
+    console.log(this.myCustomValue) // Output: Hello World
+  }
+}
+```
+
+This will provide the value "Hello World" to the `MY_CUSTOM_TOKEN` token. You can then inject this value into your component or service using the `@Inject` decorator.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
