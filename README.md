@@ -409,7 +409,13 @@ For example, instead of using a complex expression in your template binding, you
 
 Avoid calling functions in your template bindings. Instead, use property bindings and event bindings to update the UI. And, if you are using getters, make sure you perform basic efficient calculations in the getter and avoid complex calculations.
 
+Event bindings and signal reads are an exception to this rule.
+
 This is also why the `pipe` transformation values is cached by default. It is a performance optimization to avoid re-evaluating the pipe every time change detection runs.
+
+### Avoid Zone Pollution
+
+Zone pollution is a performance issue that occurs when the zone is notified about too many events. This can lead to performance issues and slow down the application.
 
 ## Angular Learned Checklist ### Components and Templates
 
