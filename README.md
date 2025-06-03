@@ -503,6 +503,17 @@ RxJS is a library for reactive programming using Observables. It allows you to w
 - Observables Operators
 - Observables vs Signals
 
+### What are Observables?
+
+Observables are a way to represent asynchronous data streams. They allow you to work with data that is emitted over time, such as user events, HTTP requests, and more.
+
+Observables are a concept provided by the RxJS library. They are not specific to Angular, but Angular provides a way to work with Observables using the `HttpClient` service and other features.
+
+In the end, an Observable is an object that produces and controls a stream of data.
+
+**A Stream of Data**
+RxJS Observables emit values over time - you can set up subscriptions to listen to these values and react to them.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
