@@ -514,6 +514,18 @@ In the end, an Observable is an object that produces and controls a stream of da
 **A Stream of Data**
 RxJS Observables emit values over time - you can set up subscriptions to listen to these values and react to them.
 
+## Observables vs Signals
+
+Observables and Signals are both ways to manage state and notify Angular about changes, but they have different use cases and characteristics.
+
+Observables is a pipeline of data emitted over time. They are great for handling asynchronous data streams, such as user events, HTTP requests, and more. Observables can be used to create complex data flows and transformations using operators.
+
+Signals are trackable data containers and you can change the value in those containers which will notify any subscribers about the change. You can also look into the container and read it at any time.
+
+With Signals, you can read the value without subscribing to it which is not possible with Observables.
+
+Observables are great for managing events and streamed data, while Signals are great for managing application state.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
