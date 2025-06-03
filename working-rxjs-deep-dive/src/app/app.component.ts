@@ -5,6 +5,7 @@ import {
   type OnDestroy,
   type OnInit,
 } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { count, interval, map, type Subscription } from 'rxjs';
 
 @Component({
@@ -14,12 +15,13 @@ import { count, interval, map, type Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   clickCount = signal(0);
+  clickCount$ = toObservable(this.clickCount);
   private sub: Subscription | undefined = undefined;
 
   constructor() {
-    effect(() => {
-      console.log(`Clicked button ${this.clickCount()} times`);
-    });
+    // effect(() => {
+    //   console.log(`Clicked button ${this.clickCount()} times`);
+    // });
   }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     //   });
     // if you only care about the next case, you could also
     // just pass a function to subscribe instead of an obj
+    this.sub = this.clickCount$.subscribe((val) => console.log(val));
   }
 
   ngOnDestroy(): void {
