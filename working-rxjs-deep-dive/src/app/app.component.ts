@@ -5,7 +5,7 @@ import {
   type OnDestroy,
   type OnInit,
 } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { count, interval, map, type Subscription } from 'rxjs';
 
 @Component({
@@ -16,6 +16,10 @@ import { count, interval, map, type Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   clickCount = signal(0);
   clickCount$ = toObservable(this.clickCount);
+  interval$ = interval(1000);
+  intervalSignal = toSignal(this.interval$, {
+    initialValue: 0,
+  });
   private sub: Subscription | undefined = undefined;
 
   constructor() {
