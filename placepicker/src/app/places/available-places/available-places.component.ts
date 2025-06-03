@@ -15,11 +15,13 @@ import { PlacesComponent } from '../places.component';
 })
 export class AvailablePlacesComponent implements OnInit, OnDestroy {
   places = signal<Place[] | undefined>(undefined);
+  isFetching = signal(false);
   placesSubscription: Subscription | undefined = undefined;
 
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
+    this.isFetching.set(true);
     this.placesSubscription = this.httpClient
       .get<{ places: Place[] }>('http://localhost:3000/places', {
         // observe: 'response',
@@ -31,6 +33,7 @@ export class AvailablePlacesComponent implements OnInit, OnDestroy {
         next: (places) => {
           this.places.set(places);
         },
+        complete: () => this.isFetching.set(false),
       });
   }
 
