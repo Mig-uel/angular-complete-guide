@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, type OnDestroy, type OnInit } from '@angular/core';
+import { interval, type Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
+  private sub: Subscription | undefined = undefined;
 
+  ngOnInit(): void {
+    this.sub = interval(1000).subscribe({
+      next: (val) => console.log(val),
+    });
+    // if you only care about the next case, you could also
+    // just pass a function to subscribe instead of an obj
+  }
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
 }
