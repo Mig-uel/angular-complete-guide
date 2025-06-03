@@ -494,6 +494,15 @@ Signals are trackable data containers that notify Angular about changes when the
 
 Signals are a great way to write more efficient code and avoid the overhead of change detection. They allow you to manage state and notify Angular about changes without using `zone.js` and the change detection mechanism.
 
+## Working with RxJS (Observables)
+
+RxJS is a library for reactive programming using Observables. It allows you to work with asynchronous data streams and provides a powerful way to handle events, HTTP requests, and more.
+
+- What are Observables?
+- Creating and using Observables
+- Observables Operators
+- Observables vs Signals
+
 ## Angular Learned Checklist
 
 ### Components and Templates
