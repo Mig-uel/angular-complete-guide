@@ -594,3 +594,14 @@ Observables are great for managing events and streamed data, while Signals are g
 - [x] Understanding the OnPush strategy
 - [x] Working with OnPush and signals
 - [x] Going zone-less with signals
+
+### RxJS (Observables)
+
+- [x] Understanding Observables
+- [x] Creating and using Observables
+- [x] Working with RxJS operators
+- [x] Working with Signals
+- [x] Observables vs Signals
+- [x] Converting Signals to Observables
+- [x] Converting Observables to Signals
+- [x] Creating and Using Custom Observables From Scratch
