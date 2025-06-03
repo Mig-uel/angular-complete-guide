@@ -16,6 +16,7 @@ import { PlacesComponent } from '../places.component';
 export class AvailablePlacesComponent implements OnInit, OnDestroy {
   places = signal<Place[] | undefined>(undefined);
   isFetching = signal(false);
+  error = signal('');
   placesSubscription: Subscription | undefined = undefined;
 
   constructor(private httpClient: HttpClient) {}
@@ -34,6 +35,7 @@ export class AvailablePlacesComponent implements OnInit, OnDestroy {
           this.places.set(places);
         },
         complete: () => this.isFetching.set(false),
+        error: (err) => this.error.set(err.statusText),
       });
   }
 
