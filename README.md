@@ -551,3 +551,14 @@ Signals are a great way to write more efficient code and avoid the overhead of c
 - [x] Using custom dependency injection tokens and providers
 - [x] Injecting non-class values
 - [x] Using the inject() function
+
+### Change Detection
+
+- [x] Understanding the change detection mechanism
+- [x] Change detection in development mode
+- [x] Writing efficient template bindings
+- [x] Avoiding zone pollution
+- [x] Using the OnPush change detection strategy
+- [x] Understanding the OnPush strategy
+- [x] Working with OnPush and signals
+- [x] Going zone-less with signals
