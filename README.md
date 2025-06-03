@@ -526,6 +526,14 @@ With Signals, you can read the value without subscribing to it which is not poss
 
 Observables are great for managing events and streamed data, while Signals are great for managing application state.
 
+## Sending HTTP Requests and Handling Responses
+
+### How to Connect Angular Applications to a Backend?
+
+Usually, you have the frontend application (Angular) and the backend (server-side application) communicating with each other over HTTP.
+
+The frontend application sends HTTP requests to the backend application, which processes the request and sends back a response.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
