@@ -1,7 +1,7 @@
 import { Component, signal, type OnDestroy, type OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { map, type Subscription } from 'rxjs';
+import { map, catchError, type Subscription, throwError } from 'rxjs';
 import { Place } from '../place.model';
 import { PlacesContainerComponent } from '../places-container/places-container.component';
 import { PlacesComponent } from '../places.component';
@@ -29,13 +29,20 @@ export class AvailablePlacesComponent implements OnInit, OnDestroy {
         // observe: 'events',
       })
       // transform data
-      .pipe(map((res) => res.places))
+      .pipe(
+        map((res) => res.places),
+        catchError(() =>
+          throwError(
+            () => new Error('Something went wrong. Please try again later.')
+          )
+        )
+      )
       .subscribe({
         next: (places) => {
           this.places.set(places);
         },
         complete: () => this.isFetching.set(false),
-        error: (err) => this.error.set(err.statusText),
+        error: (err) => this.error.set(err),
       });
   }
 
