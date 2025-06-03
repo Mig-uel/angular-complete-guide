@@ -1,7 +1,7 @@
 import { Component, signal, type OnDestroy, type OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import type { Subscription } from 'rxjs';
+import { map, type Subscription } from 'rxjs';
 import { Place } from '../place.model';
 import { PlacesContainerComponent } from '../places-container/places-container.component';
 import { PlacesComponent } from '../places.component';
@@ -25,9 +25,11 @@ export class AvailablePlacesComponent implements OnInit, OnDestroy {
         // observe: 'response',
         // observe: 'events',
       })
+      // transform data
+      .pipe(map((res) => res.places))
       .subscribe({
-        next: (res) => {
-          console.log(res.places);
+        next: (places) => {
+          this.places.set(places);
         },
       });
   }
