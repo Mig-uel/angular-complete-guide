@@ -10,7 +10,7 @@
   @if (places()) {
   <app-places [places]="places()!" />
   }
-  @else if (!places()?.length) {
+  @else if (!places().length) {
   <p class="fallback-text">You have no favorite places yet.</p>
   }
 </app-places-container>
