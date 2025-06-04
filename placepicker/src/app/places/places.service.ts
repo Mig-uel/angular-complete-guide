@@ -33,6 +33,7 @@ export class PlacesService {
   }
 
   addPlaceToUserPlaces(place: Place) {
+    // optimistic updating
     this.userPlaces.update((prev) => [...prev, place]);
 
     return this.httpClient.put('http://localhost:3000/user-places', {
