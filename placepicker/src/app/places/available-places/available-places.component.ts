@@ -1,11 +1,13 @@
 import { Component, signal, type OnDestroy, type OnInit } from '@angular/core';
-
-import { HttpClient } from '@angular/common/http';
-import { map, catchError, type Subscription, throwError } from 'rxjs';
+import { type Subscription } from 'rxjs';
 import { Place } from '../place.model';
 import { PlacesContainerComponent } from '../places-container/places-container.component';
 import { PlacesComponent } from '../places.component';
+import { PlacesService } from '../places.service';
 
+// it is often a good idea to set up the subscription
+// in the component so that you can clean it up there
+// and simplifies state updates
 @Component({
   selector: 'app-available-places',
   standalone: true,
@@ -19,24 +21,13 @@ export class AvailablePlacesComponent implements OnInit, OnDestroy {
   error = signal('');
   placesSubscription: Subscription | undefined = undefined;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private placesService: PlacesService) {}
 
   ngOnInit(): void {
     this.isFetching.set(true);
-    this.placesSubscription = this.httpClient
-      .get<{ places: Place[] }>('http://localhost:3000/places', {
-        // observe: 'response',
-        // observe: 'events',
-      })
-      // transform data
-      .pipe(
-        map((res) => res.places),
-        catchError(() =>
-          throwError(
-            () => new Error('Something went wrong. Please try again later.')
-          )
-        )
-      )
+
+    this.placesSubscription = this.placesService
+      .loadAvailablePlaces()
       .subscribe({
         next: (places) => {
           this.places.set(places);
@@ -51,14 +42,10 @@ export class AvailablePlacesComponent implements OnInit, OnDestroy {
   }
 
   onSelectPlace(selectedPlace: Place) {
-    this.httpClient
-      .put('http://localhost:3000/user-places', {
-        placeId: selectedPlace.id,
-      })
-      .subscribe({
-        next(value) {
-          console.log(value);
-        },
-      });
+    this.placesService.addPlaceToUserPlaces(selectedPlace).subscribe({
+      next(value) {
+        console.log(value);
+      },
+    });
   }
 }
