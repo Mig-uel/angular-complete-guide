@@ -1,10 +1,12 @@
 import {
+  HttpEventType,
   provideHttpClient,
   withInterceptors,
   type HttpHandlerFn,
   type HttpRequest,
 } from '@angular/common/http';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { tap } from 'rxjs';
 
 function loggingInterceptor(
   request: HttpRequest<unknown>,
@@ -17,7 +19,17 @@ function loggingInterceptor(
   console.log(request);
 
   // return next(req);
-  return next(request);
+  return next(request).pipe(
+    tap({
+      next: (e) => {
+        if (e.type === HttpEventType.Response) {
+          console.log('[Incoming Response]');
+          console.log(e.status);
+          console.log(e.body);
+        }
+      },
+    })
+  );
 }
 
 export const appConfig: ApplicationConfig = {
