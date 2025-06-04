@@ -34,11 +34,27 @@ export class PlacesService {
 
   addPlaceToUserPlaces(place: Place) {
     // optimistic updating
-    this.userPlaces.update((prev) => [...prev, place]);
+    const prevPlaces = this.userPlaces();
 
-    return this.httpClient.put('http://localhost:3000/user-places', {
-      placeId: place.id,
-    });
+    // check for duplicates; locally
+    if (!prevPlaces.some((p) => p.id === place.id)) {
+      this.userPlaces.set([...prevPlaces, place]);
+    }
+
+    // server will take care of duplicates backend
+    return this.httpClient
+      .put('http://localhost:3000/user-places', {
+        placeId: place.id,
+      })
+      .pipe(
+        catchError((e) => {
+          this.userPlaces.set(prevPlaces);
+
+          return throwError(
+            () => new Error('Failed to favorite selected place.')
+          );
+        })
+      );
   }
 
   removeUserPlace(place: Place) {}
