@@ -8,7 +8,7 @@
   }
 
   @if (places()) {
-  <app-places [places]="places()!" />
+  <app-places [places]="places()!" (selectPlace)="onSelect($event)" />
   }
   @else if (!places().length) {
   <p class="fallback-text">You have no favorite places yet.</p>
