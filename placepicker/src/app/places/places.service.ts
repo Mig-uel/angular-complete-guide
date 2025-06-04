@@ -19,7 +19,12 @@ export class PlacesService {
     );
   }
 
-  loadUserPlaces() {}
+  loadUserPlaces() {
+    return this.fetchPlaces(
+      'http://localhost:3000/user-places',
+      'Something went wrong fetching your favorite places. Please try again later.'
+    );
+  }
 
   addPlaceToUserPlaces(place: Place) {
     return this.httpClient.put('http://localhost:3000/user-places', {
