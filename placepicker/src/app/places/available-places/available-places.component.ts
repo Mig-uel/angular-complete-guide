@@ -19,7 +19,9 @@ export class AvailablePlacesComponent implements OnInit, OnDestroy {
   places = signal<Place[] | undefined>(undefined);
   isFetching = signal(false);
   error = signal('');
-  placesSubscription: Subscription | undefined = undefined;
+
+  placesSubscription: Subscription | undefined;
+  addPlaceSubscription: Subscription | undefined;
 
   constructor(private placesService: PlacesService) {}
 
@@ -38,7 +40,9 @@ export class AvailablePlacesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // unsubscribe from subscriptions for proper cleanup
     this.placesSubscription?.unsubscribe();
+    this.addPlaceSubscription?.unsubscribe();
   }
 
   onSelectPlace(selectedPlace: Place) {
