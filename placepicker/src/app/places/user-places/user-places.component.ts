@@ -3,6 +3,7 @@ import { type Subscription } from 'rxjs';
 import { PlacesContainerComponent } from '../places-container/places-container.component';
 import { PlacesComponent } from '../places.component';
 import { PlacesService } from '../places.service';
+import type { Place } from '../place.model';
 
 @Component({
   selector: 'app-user-places',
@@ -14,7 +15,8 @@ import { PlacesService } from '../places.service';
 export class UserPlacesComponent implements OnInit, OnDestroy {
   places;
   isFetching = signal(false);
-  userPlacesSubscription: Subscription | undefined = undefined;
+  userPlacesSubscription: Subscription | undefined;
+  removeUserPlaceSubscription: Subscription | undefined;
   error = signal('');
 
   constructor(private placesService: PlacesService) {
@@ -37,5 +39,12 @@ export class UserPlacesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userPlacesSubscription?.unsubscribe();
+    this.removeUserPlaceSubscription?.unsubscribe();
+  }
+
+  onSelect(place: Place) {
+    this.removeUserPlaceSubscription = this.placesService
+      .removeUserPlace(place)
+      .subscribe();
   }
 }
