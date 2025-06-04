@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { catchError, map, tap, throwError } from 'rxjs';
 import { Place } from './place.model';
+import { ErrorService } from '../shared/error.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,10 @@ export class PlacesService {
   private userPlaces = signal<Place[]>([]);
   loadedUserPlaces = this.userPlaces.asReadonly();
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private errorService: ErrorService
+  ) {}
 
   loadAvailablePlaces() {
     return this.fetchPlaces(
@@ -50,6 +54,7 @@ export class PlacesService {
         catchError((e) => {
           this.userPlaces.set(prevPlaces);
 
+          this.errorService.showError('Failed to favorite selected place.');
           return throwError(
             () => new Error('Failed to favorite selected place.')
           );
