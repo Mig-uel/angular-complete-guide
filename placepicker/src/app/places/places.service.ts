@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { catchError, map, throwError } from 'rxjs';
+import { catchError, map, tap, throwError } from 'rxjs';
 import { Place } from './place.model';
 
 @Injectable({
@@ -23,7 +23,13 @@ export class PlacesService {
     return this.fetchPlaces(
       'http://localhost:3000/user-places',
       'Something went wrong fetching your favorite places. Please try again later.'
+    ).pipe(
+      tap({
+        next: (userPlaces) => this.userPlaces.set(userPlaces),
+      })
     );
+    // tap operator is for performing side effects as a reaction to
+    // incoming data without returning and without subscribing
   }
 
   addPlaceToUserPlaces(place: Place) {
