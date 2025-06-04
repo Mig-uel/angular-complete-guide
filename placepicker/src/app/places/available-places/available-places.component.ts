@@ -46,10 +46,6 @@ export class AvailablePlacesComponent implements OnInit, OnDestroy {
   }
 
   onSelectPlace(selectedPlace: Place) {
-    this.placesService.addPlaceToUserPlaces(selectedPlace).subscribe({
-      next(value) {
-        console.log(value);
-      },
-    });
+    this.placesService.addPlaceToUserPlaces(selectedPlace).subscribe();
   }
 }
