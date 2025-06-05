@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule, type NgForm } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,10 @@ import { FormsModule, type NgForm } from '@angular/forms';
 })
 export class LoginComponent {
   onSubmit(formData: NgForm) {
+    if (formData.form.invalid) return;
+
     const { email, password } = formData.form.value;
+
+    console.log(formData.form);
   }
 }

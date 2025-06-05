@@ -8,12 +8,12 @@
       <!--  ngModel directive registers the input element with Angular -->
       <!--  it makes Angular aware of its value and state 
             and allows it to manage the form control -->
-      <input id="email" type="email" name="email" ngModel />
+      <input id="email" type="email" name="email" ngModel required email />
     </div>
 
     <div class="control no-margin">
       <label for="password">Password</label>
-      <input id="password" type="password" name="password" ngModel />
+      <input id="password" type="password" name="password" ngModel required minlength="6" />
     </div>
 
     <button class="button">Login</button>
