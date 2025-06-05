@@ -613,3 +613,24 @@ The frontend application sends HTTP requests to the backend application, which p
 - [x] Converting Signals to Observables
 - [x] Converting Observables to Signals
 - [x] Creating and Using Custom Observables From Scratch
+
+### Sending HTTP Requests and Handling Responses
+
+- [x] How to connect Angular applications to a backend
+- [x] Getting started with the HttpClient module
+- [x] Sending GET requests
+- [x] Configuring the Http Requests
+- [x] Transforming and Using the response data
+- [x] Showing loading indicators
+- [x] Handling HTTP errors
+- [x] Sending data to a backend
+- [x] Outsourcing HTTP requests to a service
+- [x] Managing HTTP-loaded data via Service
+- [x] Implementing optimistic updates
+- [x] Solving potential optimistic update issues
+- [x] Implementing Application-wide Error Management
+- [x] Sending DELETE requests
+- [x] Introducing HttpInterceptors
+- [x] Using HttpInterceptors to add headers
+- [x] Using HttpInterceptors to log requests
+- [x] Introducing Http Response Interceptors
