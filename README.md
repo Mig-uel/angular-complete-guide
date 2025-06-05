@@ -534,6 +534,18 @@ Usually, you have the frontend application (Angular) and the backend (server-sid
 
 The frontend application sends HTTP requests to the backend application, which processes the request and sends back a response.
 
+## Handling User Input and Working with Forms (Template Driven Forms and Reactive Forms)
+
+Angular offers two main approaches for handling user input and working with forms:
+
+1. **Template Driven Forms**: This approach is based on directives and is suitable for simple forms. It allows you to create forms using Angular directives in the template.
+2. **Reactive Forms**: This approach is based on reactive programming and is suitable for complex forms. It allows you to create forms using Angular's `FormControl`, `FormGroup`, and `FormArray` classes in the component.
+
+We will explore both approaches in detail, including:
+
+- Managing inputs and values
+- Validation
+
 ## Angular Learned Checklist
 
 ### Components and Templates
