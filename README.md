@@ -546,14 +546,40 @@ We will explore both approaches in detail, including:
 - Managing inputs and values
 - Validation
 
+### Template Driven Forms vs Reactive Forms
+
+As mentioned, Angular offers two main approaches for handling user input and working with forms: Template Driven Forms and Reactive Forms.
+
+You don't need to use either of these two ways, but they are the most common approaches in Angular applications.
+
+**Template Driven Forms**:
+
+Template Driven Forms are based on directives and are suitable for simple forms. They allow you to create forms using Angular directives in the template.
+
+- Setting up forms via component templates.
+- They are easy to use and require minimal setup.
+- Implementing more complex logic and forms can be tricky.
+
+The idea is that you set up your forms with the help of component templates and you register input elements with Angular so that it is aware of them and can manage their values and validation.
+
+**Reactive Forms**:
+
+Reactive Forms are based on reactive programming and are suitable for complex forms. They allow you to create forms using Angular's `FormControl`, `FormGroup`, and `FormArray` classes in the component.
+
+- Setting up forms via TS code.
+- Setup requires more verbose code, but it is more powerful and flexible.
+- They provide more control over the form state and validation.
+- They are more suitable for complex forms and dynamic form controls.
+
+With Reactive Forms, you set up your forms structure in your TypeScript code and you link that to the template elements. This way Angular knows which elements are linked to which form controls and how to manage their values and validation.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
 
 - [x] Creating reusable components
 - [x] Property binding (@Input, @Output, EventEmitter, etc.)
-- [x] Extending built-in HTML elements with custom components via Attribute
-      Selectors
+- [x] Extending built-in HTML elements with custom components via Attribute Selectors
 - [x] Content projection (ng-content)
 - [x] Content projection with multiple slots (ng-content select)
 - [x] Content projection fallback
