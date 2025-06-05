@@ -8,18 +8,18 @@
       <!--  ngModel directive registers the input element with Angular -->
       <!--  it makes Angular aware of its value and state 
             and allows it to manage the form control -->
-      <input id="email" type="email" name="email" ngModel required email />
+      <input id="email" type="email" name="email" ngModel required email #email="ngModel" />
     </div>
 
     <div class="control no-margin">
       <label for="password">Password</label>
-      <input id="password" type="password" name="password" ngModel required minlength="6" />
+      <input id="password" type="password" name="password" ngModel required minlength="6" #password="ngModel" />
     </div>
 
     <button class="button">Login</button>
   </div>
 
-  @if (form.form.controls['email'].touched && form.form.controls['password'].touched && form.invalid) {
+  @if (email.touched && password.touched && form.invalid) {
   <p class="control-error">
     Invalid input detected. Please check your email and password.
   </p>
