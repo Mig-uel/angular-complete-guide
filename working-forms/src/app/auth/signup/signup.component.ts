@@ -53,7 +53,9 @@ export class SignupComponent {
     agree: new FormControl(false, { validators: [Validators.required] }),
   });
 
-  onSubmit() {}
+  onSubmit() {
+    console.log(this.form);
+  }
 
   onReset() {
     this.form.reset();
