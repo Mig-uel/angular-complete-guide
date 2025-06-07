@@ -6,6 +6,7 @@ import {
   Validators,
   type AbstractControl,
 } from '@angular/forms';
+import { of } from 'rxjs';
 
 // custom validator
 function mustContainQuestionMark(control: AbstractControl) {
@@ -14,6 +15,15 @@ function mustContainQuestionMark(control: AbstractControl) {
   return {
     doesNotContainQuestionMark: true,
   };
+}
+
+// custom async validator
+function emailIsUnique(control: AbstractControl) {
+  if (control.value !== 'test@example.com') return of(null);
+
+  return of({
+    notUnique: true,
+  });
 }
 
 @Component({
@@ -29,6 +39,8 @@ export class LoginComponent {
     email: new FormControl('', {
       // angular has its own validators
       validators: [Validators.email, Validators.required],
+      // we can also register async validators, must return an observable
+      asyncValidators: [emailIsUnique],
     }),
     password: new FormControl('', {
       validators: [
