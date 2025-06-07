@@ -15,5 +15,7 @@ export class LoginComponent {
     password: new FormControl(),
   });
 
-  onSubmit() {}
+  onSubmit() {
+    const { email, password } = this.form.value;
+  }
 }
