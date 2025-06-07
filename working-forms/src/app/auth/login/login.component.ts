@@ -4,7 +4,17 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
+  type AbstractControl,
 } from '@angular/forms';
+
+// custom validator
+function mustContainQuestionMark(control: AbstractControl) {
+  if (control.value.includes('?')) return null;
+
+  return {
+    doesNotContainQuestionMark: true,
+  };
+}
 
 @Component({
   selector: 'app-login',
@@ -21,7 +31,11 @@ export class LoginComponent {
       validators: [Validators.email, Validators.required],
     }),
     password: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(6)],
+      validators: [
+        Validators.required,
+        Validators.minLength(6),
+        mustContainQuestionMark,
+      ],
     }),
   });
 
