@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, type OnDestroy, type OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -6,7 +6,7 @@ import {
   Validators,
   type AbstractControl,
 } from '@angular/forms';
-import { of } from 'rxjs';
+import { debounceTime, of, type Subscription } from 'rxjs';
 
 // custom validator
 function mustContainQuestionMark(control: AbstractControl) {
@@ -26,6 +26,11 @@ function emailIsUnique(control: AbstractControl) {
   });
 }
 
+const savedForm = window.localStorage.getItem('saved-email');
+const loadedForm: { email: string; password: string } = JSON.parse(
+  savedForm || '{}'
+);
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -33,10 +38,12 @@ function emailIsUnique(control: AbstractControl) {
   styleUrl: './login.component.css',
   imports: [ReactiveFormsModule],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
+  formSubscription: Subscription | undefined;
+
   // with the reactive approach we create the form group ourselves
   form = new FormGroup({
-    email: new FormControl('', {
+    email: new FormControl(loadedForm.email, {
       // angular has its own validators
       validators: [Validators.email, Validators.required],
       // we can also register async validators, must return an observable
@@ -71,5 +78,31 @@ export class LoginComponent {
 
   onSubmit() {
     const { email, password } = this.form.value;
+
+    console.log(email, password);
+  }
+
+  ngOnInit(): void {
+    // const savedEmail = window.localStorage.getItem('saved-email');
+
+    // if (savedEmail) {
+    //   const loadedEmail = JSON.parse(savedEmail);
+
+    //   this.form.patchValue(loadedEmail);
+    // }
+
+    this.formSubscription = this.form.valueChanges
+      .pipe(debounceTime(500))
+      .subscribe({
+        next: (value) =>
+          window.localStorage.setItem(
+            'saved-email',
+            JSON.stringify({ email: value.email })
+          ),
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.formSubscription?.unsubscribe();
   }
 }
