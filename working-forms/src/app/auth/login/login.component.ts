@@ -1,5 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { FormsModule, type NgForm } from '@angular/forms';
+import {
+  afterNextRender,
+  Component,
+  signal,
+  viewChild,
+  type OnDestroy,
+} from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import { debounceTime, type Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +15,37 @@ import { FormsModule, type NgForm } from '@angular/forms';
   styleUrl: './login.component.css',
   imports: [FormsModule],
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
+  private form = viewChild.required<NgForm>('form');
+  private formSubscription: Subscription | undefined;
+
+  constructor() {
+    afterNextRender(() => {
+      this.formSubscription = this.form()
+        .valueChanges?.pipe(debounceTime(500)) // rxjs also provides a debounce pipe operator
+        .subscribe({
+          next: (value) =>
+            window.localStorage.setItem(
+              'saved-email',
+              JSON.stringify({ email: value.email })
+            ),
+        });
+    });
+  }
+
   onSubmit(formData: NgForm) {
     if (formData.form.invalid) return;
 
     const { email, password } = formData.form.value;
 
     console.log(formData.form);
+
+    // reset form on submission and any internal information
+    // like dirty, valid
+    formData.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.formSubscription?.unsubscribe();
   }
 }
