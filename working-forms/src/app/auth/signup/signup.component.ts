@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {
+  FormArray,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -39,6 +40,12 @@ export class SignupComponent {
       postalCode: new FormControl('', { validators: [Validators.required] }),
       city: new FormControl('', { validators: [Validators.required] }),
     }),
+
+    source: new FormArray([
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false),
+    ]),
 
     role: new FormControl<
       'student' | 'teacher' | 'employee' | 'founder' | 'other'
