@@ -21,6 +21,17 @@ export class LoginComponent implements OnDestroy {
 
   constructor() {
     afterNextRender(() => {
+      const savedEmail = window.localStorage.getItem('saved-email');
+
+      if (savedEmail) {
+        const loadedEmail = JSON.parse(savedEmail).email;
+
+        setTimeout(
+          () => this.form().controls['email'].setValue(loadedEmail),
+          1
+        );
+      }
+
       this.formSubscription = this.form()
         .valueChanges?.pipe(debounceTime(500)) // rxjs also provides a debounce pipe operator
         .subscribe({
