@@ -573,6 +573,16 @@ Reactive Forms are based on reactive programming and are suitable for complex fo
 
 With Reactive Forms, you set up your forms structure in your TypeScript code and you link that to the template elements. This way Angular knows which elements are linked to which form controls and how to manage their values and validation.
 
+## Routing and Building Multi-Page and Single-Page Applications
+
+Angular provides a powerful routing system that allows you to build multi-page and single-page applications. The routing system allows you to define routes, navigate between different views, and manage the application state.
+
+- What is routing? And why would you use it?
+- Setting up routes in Angular
+- Route configuration and navigation
+- Nested routes and lazy loading
+- Resolving data and controlling access
+
 ## Angular Learned Checklist
 
 ### Components and Templates
