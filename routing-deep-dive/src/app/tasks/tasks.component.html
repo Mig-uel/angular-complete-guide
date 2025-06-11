@@ -1,6 +1,7 @@
 <p>
   <!-- special angular routerLink, ./ means "stay on the same level" -->
-  <a routerLink="./" [queryParams]="{order: 'asc'}">Sort Ascending / Descending</a>
+  <a routerLink="./" [queryParams]="{order: order() === 'asc' ? 'desc' : 'asc'}">Sort
+    {{order() === 'asc' ? 'Descending' : 'Ascending'}}</a>
 </p>
 
 <ul>

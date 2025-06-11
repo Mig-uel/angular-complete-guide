@@ -13,6 +13,7 @@ import { RouterLink } from '@angular/router';
 })
 export class TasksComponent {
   uid = input.required<string>();
+  order = input<'asc' | 'desc'>();
 
   constructor(private tasksService: TasksService) {}
 
