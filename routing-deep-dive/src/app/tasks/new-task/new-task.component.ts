@@ -1,12 +1,13 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { RouterLink, Router } from '@angular/router';
 import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-new-task',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css',
 })
@@ -15,7 +16,8 @@ export class NewTaskComponent {
   enteredTitle = signal('');
   enteredSummary = signal('');
   enteredDate = signal('');
-  private tasksService = inject(TasksService);
+
+  constructor(private tasksService: TasksService, private router: Router) {}
 
   onSubmit() {
     this.tasksService.addTask(
@@ -26,5 +28,7 @@ export class NewTaskComponent {
       },
       this.uid()
     );
+
+    this.router.navigate(['/users', this.uid(), 'tasks'], { replaceUrl: true });
   }
 }
