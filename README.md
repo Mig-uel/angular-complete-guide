@@ -672,3 +672,25 @@ With Reactive Forms, you set up your forms structure in your TypeScript code and
 - [x] Using HttpInterceptors to add headers
 - [x] Using HttpInterceptors to log requests
 - [x] Introducing Http Response Interceptors
+
+### Handling User Input and Working with Forms (Template Driven Forms and Reactive Forms)
+
+- [x] Template Driven Forms vs Reactive Forms
+- [x] Template Driven Forms - Registering Form Controls
+- [x] Template Driven Forms - Getting Access to the Angular Managed Form
+- [x] Template Driven Forms - Extracting User Input Values
+- [x] Template Driven Forms - Validating Input with Form Validation Directives
+- [x] Template Driven Forms - Using Form Validation Status to Provide User Feedback
+- [x] Template Driven Forms - Adding Validation Styles
+- [x] Template Driven Forms - Interacting with the Underlying Form Object in the Component
+- [x] Template Driven Forms - Updating the Form Programmatically
+- [x] Reactive Forms - Getting Started
+- [x] Reactive Forms - Syncing Reactive Form Definitions with the Template
+- [x] Reactive Forms - Handling Form Submission
+- [x] Reactive Forms - Adding Validators to Reactive Forms
+- [x] Reactive Forms - Building Custom Validators
+- [x] Reactive Forms - Creating and Using Async Validators
+- [x] Reactive Forms - Interacting with the Form Programmatically
+- [x] Reactive Forms - Connecting and Registering Inputs for a Complex Form
+- [x] Reactive Forms - Working with Nested Form Groups and Form Arrays
+- [x] Reactive Forms - Creating Multi-Input Validators/Form Group Validators
