@@ -583,6 +583,26 @@ Angular provides a powerful routing system that allows you to build multi-page a
 - Nested routes and lazy loading
 - Resolving data and controlling access
 
+### What is Routing? And Why Would You Use It?
+
+Angular application are typically single-page applications (SPAs) that load a single HTML page and dynamically update the content based on user interactions.
+
+In simpler terms, there is only a single HTML page that is loaded when the application starts. The content of that page is then dynamically updated based on user interactions, such as clicking on links or buttons.
+
+Routing simply means updating the UI as the user navigates through the application. It allows you to define different views or pages in your application and navigate between them.
+
+Angular has built-in support for routing, more specifically, client-side routing. This means that the routing is handled in the browser, without the need to reload the entire page.
+
+Angular watches and manipulates the URL and renders different components for different URLs.
+
+Important: this is all happening in the browser, there is no server-side routing involved. The server only serves the initial HTML page and the Angular application takes care of the routing.
+
+Example:
+/users -> UsersComponent
+/shop -> ShopComponent
+
+When the user navigates to `/users`, Angular will render the `UsersComponent` and when the user navigates to `/shop`, Angular will render the `ShopComponent`.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
