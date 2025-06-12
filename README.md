@@ -613,6 +613,21 @@ To deliver real great Angular applications, performance actually matters. When i
 - Deferrable views and how to use them
 - Lazily loaded routes and how to configure them
 
+### What is Lazy Loading?
+
+Lazy loading is a design pattern that postpones the loading of resources until they are actually needed. In the context of Angular applications, this means that certain modules or components are not loaded until the user navigates to a route that requires them. This can significantly improve the initial loading time of the application and reduce the amount of code that needs to be downloaded and parsed upfront.
+
+In the end it means that you want to build your app such that certain pieces of your code are only loaded when they are actually needed.
+
+- Only load and run code when it is actually needed
+- You split it into multiple chunks that are loaded on demand
+
+Advantage is that less code needs to be downloaded and parsed upfront, leading to faster initial load times and improved performance.
+
+- Smaller initial bundle size, application is up and running quicker
+- Leads to a faster startup time of the application
+- Leads to a better user experience
+
 ## Angular Learned Checklist
 
 ### Components and Templates
