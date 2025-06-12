@@ -16,6 +16,7 @@ export class NewTaskComponent {
   enteredTitle = signal('');
   enteredSummary = signal('');
   enteredDate = signal('');
+  submitted = false;
 
   constructor(private tasksService: TasksService, private router: Router) {}
 
@@ -29,6 +30,7 @@ export class NewTaskComponent {
       this.uid()
     );
 
+    this.submitted = true;
     this.router.navigate(['/users', this.uid(), 'tasks'], { replaceUrl: true });
   }
 }
@@ -40,6 +42,8 @@ export class NewTaskComponent {
 export const canLeaveEditPage: CanDeactivateFn<NewTaskComponent> = (
   component
 ) => {
+  if (component.submitted) return true; // allow navigation if the form has been submitted
+
   if (
     component.enteredTitle() ||
     component.enteredSummary() ||
