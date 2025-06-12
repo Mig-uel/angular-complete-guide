@@ -2,6 +2,7 @@ import type { Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NoTaskComponent } from './tasks/no-task/no-task.component';
 import {
+  resolveTitle,
   resolveUserName,
   UserTasksComponent,
 } from './users/user-tasks/user-tasks.component';
@@ -11,6 +12,7 @@ export const routes: Routes = [
   {
     path: '', // <your-domain>
     component: NoTaskComponent,
+    title: 'Home', // set the title of the page
   },
   {
     path: 'users/:uid', // <your-domain>/users/<uid>
@@ -34,6 +36,9 @@ export const routes: Routes = [
     // this is useful for fetching data from a server
     // and passing it to the component
     resolve: { userName: resolveUserName },
+
+    // we can also pass a resolver to the title property for dynamic titles
+    title: resolveTitle,
   },
   {
     path: '**', // catch-all route
