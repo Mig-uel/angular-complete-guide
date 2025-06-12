@@ -52,7 +52,7 @@ export const routes: Routes = [
      * or an observable that emits a boolean value.
      */
 
-    canMatch: [dummyCanMatch], // the most versatile guard that can be used to control access to the route
+    // canMatch: [dummyCanMatch], // the most versatile guard that can be used to control access to the route
 
     canActivate: [], // guard that can be used to control access to the route after it has been matched but before the component is loaded
 
