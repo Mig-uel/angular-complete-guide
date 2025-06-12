@@ -1,6 +1,9 @@
 import type { Routes } from '@angular/router';
+import {
+  canLeaveEditPage,
+  NewTaskComponent,
+} from '../tasks/new-task/new-task.component';
 import { resolveUserTasks, TasksComponent } from '../tasks/tasks.component';
-import { NewTaskComponent } from '../tasks/new-task/new-task.component';
 
 export const routes: Routes = [
   {
@@ -21,5 +24,7 @@ export const routes: Routes = [
   {
     path: 'tasks/new',
     component: NewTaskComponent,
+
+    canDeactivate: [canLeaveEditPage], // canDeactivate is used to prevent navigation if there are unsaved changes
   },
 ];
