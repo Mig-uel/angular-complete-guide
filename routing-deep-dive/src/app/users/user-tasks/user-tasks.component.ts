@@ -81,3 +81,20 @@ export const resolveUserName: ResolveFn<string> = (
   const userName = usersService.users.find((u) => u.id === uid)?.name;
   return userName || '';
 };
+
+/**
+ * This is a resolver function that resolves dynamic title
+ * based on the user ID (uid) from the route parameters.
+ */
+export const resolveTitle: ResolveFn<string> = (
+  activateRoute: ActivatedRouteSnapshot,
+  _: RouterStateSnapshot
+) => {
+  const usersService = inject(UsersService);
+  const uid = activateRoute.paramMap.get('uid');
+
+  return (
+    usersService.users.find((u) => u.id === uid)?.name + ' Tasks' ||
+    'User Tasks'
+  );
+};
