@@ -1,5 +1,6 @@
-import { Component, computed, inject, input, type OnInit } from '@angular/core';
+import { Component, inject, input, type OnInit } from '@angular/core';
 import {
+  ActivatedRoute,
   RouterLink,
   RouterOutlet,
   type ActivatedRouteSnapshot,
@@ -41,9 +42,23 @@ export class UserTasksComponent implements OnInit {
    */
   userName = input<string>(''); // optional input, default is empty string
 
+  constructor(private activatedRoute: ActivatedRoute) {
+    // we can also access the resolved data or data passed to the route
+    // by injecting the ActivatedRoute service
+    // and accessing the `data` property
+  }
+
   ngOnInit() {
     // read the data passed to the route
     console.log(this.message());
+
+    // read the resolved data and/or data passed to the route
+    // don't forget to clean up the subscription
+    console.log(
+      this.activatedRoute.data.subscribe({
+        next: (data) => console.log(data),
+      })
+    );
   }
 }
 
