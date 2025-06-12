@@ -724,3 +724,37 @@ When the user navigates to `/users`, Angular will render the `UsersComponent` an
 - [x] Reactive Forms - Connecting and Registering Inputs for a Complex Form
 - [x] Reactive Forms - Working with Nested Form Groups and Form Arrays
 - [x] Reactive Forms - Creating Multi-Input Validators/Form Group Validators
+
+### Routing and Building Multi-Page and Single-Page Applications
+
+- [x] What is routing? And why would you use it?
+- [x] Enabling routing and adding a basic route
+- [x] Rendering routes in the template
+- [x] Registering multiple routes
+- [x] Adding links the right way
+- [x] Styling active links
+- [x] Setting up and navigating to dynamic routes
+- [x] Extracting dynamic route parameters via inputs
+- [x] Extracting dynamic route parameters via the ActivatedRoute service observable
+- [x] Working with nested routes
+- [x] Route links and relative links
+- [x] Accessing the parent route data from inside a child route
+- [x] Loading data based on route parameters in child routes
+- [x] Link shortcuts and programmatic navigation
+- [x] Adding a "Not Found" route
+- [x] Redirecting routes
+- [x] Splitting route definitions across multiple files
+- [x] Activated Route vs Activated Route Snapshot
+- [x] Setting query parameters
+- [x] Extracting query parameters via Inputs
+- [x] Extracting query parameters via the ActivatedRoute service observable
+- [x] Using query parameters for data manipulation
+- [x] Adding static data to routes
+- [x] Resolving Route-related dynamic data
+- [x] Accessing route data in components
+- [x] Controlling route resolver execution
+- [x] Setting and resolving titles
+- [x] Introducing route guards
+- [x] Making sense of the CanDeactivate Guard
+- [x] Improving the CanDeactivate Guard
+- [x] Reloading pages via the Angular Router and configuring programmatic navigation
