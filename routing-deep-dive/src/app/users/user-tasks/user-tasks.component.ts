@@ -57,6 +57,8 @@ export const resolveUserName: ResolveFn<string> = (
   activatedRoute: ActivatedRouteSnapshot,
   _: RouterStateSnapshot
 ) => {
+  // we can inject the UsersService to get the user data
+  // and find the user by ID (uid) from the route parameters
   const usersService = inject(UsersService);
 
   const uid = activatedRoute.paramMap.get('uid');
