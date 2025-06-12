@@ -603,6 +603,16 @@ Example:
 
 When the user navigates to `/users`, Angular will render the `UsersComponent` and when the user navigates to `/shop`, Angular will render the `ShopComponent`.
 
+## Code Splitting and Deferrable Views
+
+To deliver real great Angular applications, performance actually matters. When it comes to optimizing the performance, one of the building blocks is code splitting or lazy loading.
+
+- What is lazy loading?
+- Why is it important?
+- Different ways to implement lazy loading in Angular
+- Deferrable views and how to use them
+- Lazily loaded routes and how to configure them
+
 ## Angular Learned Checklist
 
 ### Components and Templates
