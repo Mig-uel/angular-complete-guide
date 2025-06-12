@@ -14,6 +14,16 @@ export const routes: Routes = [
     component: UserTasksComponent,
 
     children: userRoutes,
+
+    // we can also define a data property on the route
+    // this data can be used in the component
+    // you can set any arbitrary data here
+    // this data is available in the ActivatedRoute
+    // and can be accessed in the component using the `data` property
+    // of the ActivatedRoute
+    data: {
+      message: 'Hello from the users route!',
+    },
   },
   {
     path: '**', // catch-all route
