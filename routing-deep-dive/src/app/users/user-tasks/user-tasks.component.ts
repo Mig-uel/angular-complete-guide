@@ -1,6 +1,12 @@
-import { Component, computed, input, type OnInit } from '@angular/core';
+import { Component, computed, inject, input, type OnInit } from '@angular/core';
+import {
+  RouterLink,
+  RouterOutlet,
+  type ActivatedRouteSnapshot,
+  type ResolveFn,
+  type RouterStateSnapshot,
+} from '@angular/router';
 import { UsersService } from '../users.service';
-import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-user-tasks',
@@ -11,13 +17,29 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class UserTasksComponent implements OnInit {
   uid = input.required<string>();
+
+  // we can get a hold of the data passed to the route in the component
+  // by injecting the ActivatedRoute service
+  // and accessing the `data` property
+  // or if passed withComponentInputBinding we can use the
+  // `@Input` decorator or `input` function to bind the data directly
   message = input<string>(''); // optional input, default is empty string
 
-  constructor(private usersService: UsersService) {}
-
-  userName = computed(
-    () => this.usersService.users.find((u) => u.id === this.uid())?.name
-  );
+  /**
+   * we can get access to the resolved data
+   * by injecting the ActivatedRoute service
+   * and accessing the `data` property
+   * the resolved data is available in the `data` property
+   * of the ActivatedRoute service
+   * we can also use the `@Input` decorator to bind the data
+   * directly to the component input
+   * or use the `input` function to bind the data directly
+   * to the component input
+   * this is useful for passing data to the component
+   * without having to access the ActivatedRoute service
+   * and accessing the `data` property
+   */
+  userName = input<string>(''); // optional input, default is empty string
 
   ngOnInit() {
     // read the data passed to the route
@@ -25,8 +47,20 @@ export class UserTasksComponent implements OnInit {
   }
 }
 
-// we can get a hold of the data passed to the route in the component
-// by injecting the ActivatedRoute service
-// and accessing the `data` property
-// or if passed withComponentInputBinding we can use the
-// `@Input` decorator or `input` function to bind the data directly
+/**
+ * This is a resolver function that resolves the user's name
+ * based on the user ID (uid) from the route parameters.
+ * It is used to fetch the user's name before the route is activated.
+ * The resolved data can be used in the component.
+ */
+export const resolveUserName: ResolveFn<string> = (
+  activatedRoute: ActivatedRouteSnapshot,
+  _: RouterStateSnapshot
+) => {
+  const usersService = inject(UsersService);
+
+  const uid = activatedRoute.paramMap.get('uid');
+
+  const userName = usersService.users.find((u) => u.id === uid)?.name;
+  return userName || '';
+};

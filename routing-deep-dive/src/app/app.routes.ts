@@ -1,7 +1,10 @@
 import type { Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NoTaskComponent } from './tasks/no-task/no-task.component';
-import { UserTasksComponent } from './users/user-tasks/user-tasks.component';
+import {
+  resolveUserName,
+  UserTasksComponent,
+} from './users/user-tasks/user-tasks.component';
 import { routes as userRoutes } from './users/user.routes';
 
 export const routes: Routes = [
@@ -24,6 +27,13 @@ export const routes: Routes = [
     data: {
       message: 'Hello from the users route!',
     },
+
+    // we can also pass dynamic data to the component
+    // by using the resolve property which allows us to
+    // resolve data before the route is activated
+    // this is useful for fetching data from a server
+    // and passing it to the component
+    resolve: { userName: resolveUserName },
   },
   {
     path: '**', // catch-all route
