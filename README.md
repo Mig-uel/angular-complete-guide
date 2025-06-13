@@ -670,6 +670,28 @@ Potential downsides of SPAs include:
 
 These downsides might not matter if you are building an internal application or a dashboard, but they can be significant for public-facing applications.
 
+### Server-Side Rendering (SSR) Introduction
+
+Server-Side Rendering (SSR) is a technique where the application is rendered on the server and the HTML is sent to the browser. This can improve performance and SEO, as the initial page load is faster and search engines can index the content more easily.
+
+Angular app routes are rendered on-demand on a dynamic web server. When a user navigates to a route, the server renders the HTML for that route and sends it to the browser.
+
+Instead of the browser receiving an empty HTML file and then loading the JavaScript code to render the application, the server sends a fully rendered HTML page for the requested route.
+
+Keep in mind, the rendered page still contains Angular's client-side JavaScript code, which is necessary for the application to function properly once it is loaded in the browser.
+
+The web application is then hydrated ("activated") by Angular in the browser, which means that the client-side JavaScript code takes over and makes the application interactive. It becomes a Single-Page Application (SPA) after the initial server-side rendering.
+
+You get the best of both worlds: the initial page load is fast and SEO-friendly, while the application remains interactive and dynamic once it is loaded in the browser.
+
+When going wit SSR, you need to set up a dynamic web server that can handle the rendering of the application. This typically involves using a Node.js server with Angular Universal or a similar framework.
+
+Potential downsides of SSR include:
+
+- Increased server load, as the server is responsible for rendering the application for each request.
+- More complex deployment and infrastructure requirements, as you need a dynamic web server.
+- Potentially longer time-to-first-byte for users, as the server needs to render the page before sending it to the client.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
