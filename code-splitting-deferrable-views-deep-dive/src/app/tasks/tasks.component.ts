@@ -17,7 +17,10 @@ export class TasksComponent {
   order = input<'asc' | 'desc' | undefined>();
 }
 
-const resolveUserTasks: ResolveFn<Task[]> = (activatedRouteSnapshot, _) => {
+export const resolveUserTasks: ResolveFn<Task[]> = (
+  activatedRouteSnapshot,
+  _
+) => {
   const order = activatedRouteSnapshot.queryParams['order'];
   const tasksService = inject(TasksService);
   const tasks = tasksService
