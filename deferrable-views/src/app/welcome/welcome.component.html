@@ -41,4 +41,12 @@
   </p>
 </section>
 
+<!-- By default, Angular will start loading the component when it is
+    in idle state aka when there are no other tasks to process -->
+@defer(on viewport) {
+<!-- @defer can also take configuration options -->
+<!-- Angular offers triggers to load components -->
 <app-offer-preview />
+} @placeholder {
+<p>We might have an offer...</p>
+}
