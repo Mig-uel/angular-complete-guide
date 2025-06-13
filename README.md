@@ -628,6 +628,19 @@ Advantage is that less code needs to be downloaded and parsed upfront, leading t
 - Leads to a faster startup time of the application
 - Leads to a better user experience
 
+### Deferrable Views
+
+Lazy loading is just one way that Angular offers to optimize the performance of your application. Another way is to use deferrable views.
+
+Deferrable views allow you to load components or modules only when they are actually needed, rather than loading them upfront. This can be useful for components that are not immediately visible to the user or that are only used in specific scenarios.
+
+Lazy loading is a specific implementation of deferrable views, where entire modules are loaded on demand based on the user's navigation.
+
+Lazy Loading vs. Deferrable Views:
+
+- **Lazy Loading**: Loads entire modules on demand based on the user's navigation. It is a specific implementation of deferrable views.
+- **Deferrable Views**: Allows loading components or modules only when they are actually needed, rather than loading them upfront.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
