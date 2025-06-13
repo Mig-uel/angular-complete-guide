@@ -692,6 +692,24 @@ Potential downsides of SSR include:
 - More complex deployment and infrastructure requirements, as you need a dynamic web server.
 - Potentially longer time-to-first-byte for users, as the server needs to render the page before sending it to the client.
 
+### Static Site Generation (SSG) Introduction
+
+Static Site Generation (SSG) is a technique where the application is pre-rendered and served as static files. This can improve performance and SEO, as the initial page load is faster and search engines can index the content more easily.
+
+Angular app routes are pre-rendered at build time, meaning that the HTML for each route is generated when the application is built. The generated HTML files are then served as static files from a web server or a content delivery network (CDN).
+
+The browser received the finished rendered HTML for each route, allowing for faster initial page loads and improved SEO.
+
+Web app is hydrated and becomes a Single-Page Application (SPA) after the initial static rendering. The client-side JavaScript code takes over and makes the application interactive.
+
+A dynamic web server is required only if you need to handle user-specific data or dynamic content that cannot be pre-rendered at build time.
+
+Potential downsides of SSG include:
+
+- Limited flexibility for dynamic content, as the application is pre-rendered and cannot change based on user interactions or real-time data.
+- Longer build times, as the application needs to be pre-rendered for each route.
+- No dynamic server-side data fetching, as the application is pre-rendered and served as static files.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
