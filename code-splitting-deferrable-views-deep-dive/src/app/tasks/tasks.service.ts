@@ -2,7 +2,11 @@ import { Injectable, signal } from '@angular/core';
 
 import { type NewTaskData } from './task/task.model';
 
-@Injectable({ providedIn: 'root' })
+// @Injectable({ providedIn: 'root' })
+// Setting up lazy loading for the TasksService
+// will allow us to load this service only when the user navigates to the tasks route.
+// This is useful for optimizing the initial load time of the application.
+@Injectable()
 export class TasksService {
   private tasks = signal([
     {
