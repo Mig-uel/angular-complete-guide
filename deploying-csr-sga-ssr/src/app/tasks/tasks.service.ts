@@ -1,6 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { afterNextRender, Injectable, signal } from '@angular/core'
 
-import { type NewTaskData } from './task/task.model';
+import { type NewTaskData } from './task/task.model'
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {
@@ -28,16 +28,18 @@ export class TasksService {
         'Prepare and describe an issue template which will help with project management',
       dueDate: '2024-06-15',
     },
-  ]);
+  ])
 
-  allTasks = this.tasks.asReadonly();
+  allTasks = this.tasks.asReadonly()
 
   constructor() {
-    const tasks = localStorage.getItem('tasks');
+    afterNextRender(() => {
+      const tasks = localStorage.getItem('tasks')
 
-    if (tasks) {
-      this.tasks.set(JSON.parse(tasks));
-    }
+      if (tasks) {
+        this.tasks.set(JSON.parse(tasks))
+      }
+    })
   }
 
   addTask(taskData: NewTaskData, userId: string) {
@@ -50,18 +52,16 @@ export class TasksService {
         dueDate: taskData.date,
       },
       ...prevTasks,
-    ]);
-    this.saveTasks();
+    ])
+    this.saveTasks()
   }
 
   removeTask(id: string) {
-    this.tasks.update((prevTasks) =>
-      prevTasks.filter((task) => task.id !== id)
-    );
-    this.saveTasks();
+    this.tasks.update((prevTasks) => prevTasks.filter((task) => task.id !== id))
+    this.saveTasks()
   }
 
   private saveTasks() {
-    localStorage.setItem('tasks', JSON.stringify(this.tasks()));
+    localStorage.setItem('tasks', JSON.stringify(this.tasks()))
   }
 }
