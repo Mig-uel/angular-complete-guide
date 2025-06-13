@@ -653,6 +653,23 @@ Angular applications can be deployed in different ways, depending on the require
 - Why choose SSR or SGA over CSR?
 - Deployment example
 
+### Building SPAs: Pros and Cons
+
+Single-Page Applications (SPAs) are a popular choice for building modern web applications. They offer a seamless user experience by loading content dynamically without requiring full page reloads. However, they also come with their own set of challenges and considerations.
+
+The entry point of an SPA is typically a single HTML file that loads the necessary JavaScript and CSS files. From there, the application is bootstrapped and the user interacts with the app through a series of client-side routes.
+
+- All the UI rendering happens on the client-side by the JavaScript code running in the browser.
+- All code executes in the browser, no server-side rendering involved.
+- No dynamic web server needed - a static host suffices.
+
+Potential downsides of SPAs include:
+
+- Initial loading time can be longer due to the need to download and parse the entire application bundle.
+- Bad SEO performance, as search engines may have difficulty indexing the content.
+
+These downsides might not matter if you are building an internal application or a dashboard, but they can be significant for public-facing applications.
+
 ## Angular Learned Checklist
 
 ### Components and Templates
