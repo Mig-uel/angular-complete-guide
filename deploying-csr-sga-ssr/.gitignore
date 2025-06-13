@@ -1,0 +1,40 @@
+# Compiled output
+/dist
+/tmp
+
+# Dependencies
+/node_modules
+
+# Environment configuration
+/.env
+/.env.development
+/.env.production
+
+# IDEs and editors
+/.idea
+/.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+/logs
+
+# Coverage
+/coverage
+
+# Angular files
+/angular.json
+
+# Packages
+/package-lock.json
+/yarn.lock
+
+# Optional: OS generated files
+._*
