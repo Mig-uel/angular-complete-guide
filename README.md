@@ -641,6 +641,18 @@ Lazy Loading vs. Deferrable Views:
 - **Lazy Loading**: Loads entire modules on demand based on the user's navigation. It is a specific implementation of deferrable views.
 - **Deferrable Views**: Allows loading components or modules only when they are actually needed, rather than loading them upfront.
 
+## Deploying Angular Applications - CSR, SSR, and SGA
+
+Angular applications can be deployed in different ways, depending on the requirements and use cases. The most common deployment strategies are:
+
+- Client-Side Rendering (CSR): The application is rendered in the browser using JavaScript. This is the default mode for Angular applications and is suitable for most use cases.
+- Server-Side Rendering (SSR): The application is rendered on the server and the HTML is sent to the browser. This can improve performance and SEO, but requires additional setup and configuration.
+- Static Generated Applications (SGA): The application is pre-rendered and served as static files. This can improve performance and SEO, but requires additional setup and configuration.
+
+- What deployment strategy should you choose?
+- Why choose SSR or SGA over CSR?
+- Deployment example
+
 ## Angular Learned Checklist
 
 ### Components and Templates
