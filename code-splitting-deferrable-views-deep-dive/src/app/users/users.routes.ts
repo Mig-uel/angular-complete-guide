@@ -1,29 +1,38 @@
 import { Routes } from '@angular/router';
-import { resolveUserTasks } from './../../../../routing-deep-dive/src/app/tasks/tasks.component';
 
 import {
-  NewTaskComponent,
   canLeaveEditPage,
+  NewTaskComponent,
 } from '../tasks/new-task/new-task.component';
-import { TasksComponent } from '../tasks/tasks.component';
+import { resolveUserTasks, TasksComponent } from '../tasks/tasks.component';
+import { TasksService } from '../tasks/tasks.service';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tasks',
-    pathMatch: 'full',
-  },
-  {
-    path: 'tasks', // <your-domain>/users/<uid>/tasks
-    component: TasksComponent,
-    runGuardsAndResolvers: 'always',
-    resolve: {
-      userTasks: resolveUserTasks,
-    },
-  },
-  {
-    path: 'tasks/new',
-    component: NewTaskComponent,
-    canDeactivate: [canLeaveEditPage],
+
+    // Lazy loading the TasksService
+    providers: [TasksService],
+
+    children: [
+      {
+        path: '',
+        redirectTo: 'tasks',
+        pathMatch: 'full',
+      },
+      {
+        path: 'tasks', // <your-domain>/users/<uid>/tasks
+        component: TasksComponent,
+        runGuardsAndResolvers: 'always',
+        resolve: {
+          userTasks: resolveUserTasks,
+        },
+      },
+      {
+        path: 'tasks/new',
+        component: NewTaskComponent,
+        canDeactivate: [canLeaveEditPage],
+      },
+    ],
   },
 ];
